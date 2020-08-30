@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Search &mdash; LESSON NAME  documentation</title>
+  <title>SciPy &mdash; LESSON NAME  documentation</title>
   
 
   
@@ -23,7 +23,6 @@
   
 
   
-    
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -42,9 +41,10 @@
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-    <script type="text/javascript" src="../_static/searchtools.js"></script>
     <link rel="index" title="Index" href="../genindex/" />
-    <link rel="search" title="Search" href="#" /> 
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="Matplotlib" href="../matplotlib/" />
+    <link rel="prev" title="Enter NumPy" href="../numpy/" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -71,7 +71,7 @@
 
           
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="#" method="get">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -90,12 +90,16 @@
             
             
               <p class="caption"><span class="caption-text">The lesson</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../intro-to-python/">Introduction to Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../organizing-code/">Organizing Python code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises-1/">Exercises 1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../numpy/">Enter NumPy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../scipy/">SciPy</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">SciPy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#exercise-3-1">Exercise 3.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercise-3-2">Exercise 3.2</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../matplotlib/">Matplotlib</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demo-app/">Demo application</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../see-also/">Other useful Scientific Python libraries</a></li>
@@ -146,14 +150,14 @@
     
       <li><a href="../" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Search</li>
+      <li>SciPy</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
             
-              <a href="https://github.com/coderefinery/python-for-scicomp/blob/master/search" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/coderefinery/python-for-scicomp/blob/master/scipy.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -167,23 +171,60 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <noscript>
-  <div id="fallback" class="admonition warning">
-    <p class="last">
-      Please activate JavaScript to enable the search functionality.
-    </p>
-  </div>
-  </noscript>
+  <div class="section" id="scipy">
+<h1>SciPy<a class="headerlink" href="#scipy" title="Permalink to this headline">¶</a></h1>
+<p>SciPy is a library that builds on top of NumPy. It contains a lot of
+interfaces to battle-tested numerical routines written in Fortran or
+C, as well as python implementations of many common
+algorithms. Briefly, it contains functionality for</p>
+<ul class="simple">
+<li><p>Special functions (Bessel, Gamma, etc.)</p></li>
+<li><p>Numerical integration</p></li>
+<li><p>Optimization</p></li>
+<li><p>Interpolation</p></li>
+<li><p>Fast Fourier Transform (FFT)</p></li>
+<li><p>Linear algebra (more complete than in NumPy)</p></li>
+<li><p>Sparse matrices</p></li>
+<li><p>Statistics</p></li>
+<li><p>More I/O routine, e.g. Matrix Market format for sparse matrices,
+MATLAB files (.mat), etc.</p></li>
+</ul>
+<div class="section" id="exercise-3-1">
+<h2>Exercise 3.1<a class="headerlink" href="#exercise-3-1" title="Permalink to this headline">¶</a></h2>
+<p>Using scipy, calculate the integral of the function <code class="docutils literal notranslate"><span class="pre">sin</span></code> in the
+interval <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">pi]</span></code>, and compare with the analytical result.</p>
+</div>
+<div class="section" id="exercise-3-2">
+<h2>Exercise 3.2<a class="headerlink" href="#exercise-3-2" title="Permalink to this headline">¶</a></h2>
+<p>Use the SciPy sparse matrix functionality to create a random sparse
+matrix with a probability of non-zero elements of 0.05 and size 10000
+x 10000. The use the SciPy sparse linear algebra support to calculate
+the matrix-vector product of the sparse matrix you just created and a
+random vector. Use the %timeit macro to measure how long it
+takes. Does the optional <code class="docutils literal notranslate"><span class="pre">format</span></code> argument when you create the
+sparse matrix make a difference?</p>
+<p>Then, compare to how long it takes if you’d instead first convert the
+sparse matrix to a normal NumPy dense array, and use the NumPy <code class="docutils literal notranslate"><span class="pre">dot</span></code>
+method to calculate the matrix-vector product.</p>
+<p>Can you figure out a quick rule of thumb when it’s worth using a
+sparse matrix representation vs. a dense representation?</p>
+</div>
+</div>
 
-  
-  <div id="search-results">
-  
-  </div>
 
            </div>
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../matplotlib/" class="btn btn-neutral float-right" title="Matplotlib" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../numpy/" class="btn btn-neutral float-left" title="Enter NumPy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -223,14 +264,7 @@
   
   
     
-  
-  <script type="text/javascript">
-    jQuery(function() { Search.loadIndex("../searchindex.js"); });
-  </script>
-  
-  <script type="text/javascript" id="searchindexloader"></script>
    
-
 
 </body>
 </html>

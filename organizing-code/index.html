@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Search &mdash; LESSON NAME  documentation</title>
+  <title>Organizing Python code &mdash; LESSON NAME  documentation</title>
   
 
   
@@ -23,7 +23,6 @@
   
 
   
-    
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -42,9 +41,10 @@
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-    <script type="text/javascript" src="../_static/searchtools.js"></script>
     <link rel="index" title="Index" href="../genindex/" />
-    <link rel="search" title="Search" href="#" /> 
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="Exercises 1" href="../exercises-1/" />
+    <link rel="prev" title="Introduction to Python" href="../intro-to-python/" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -71,7 +71,7 @@
 
           
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="#" method="get">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -90,9 +90,9 @@
             
             
               <p class="caption"><span class="caption-text">The lesson</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../intro-to-python/">Introduction to Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../organizing-code/">Organizing Python code</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Organizing Python code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises-1/">Exercises 1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../numpy/">Enter NumPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../scipy/">SciPy</a></li>
@@ -146,14 +146,14 @@
     
       <li><a href="../" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Search</li>
+      <li>Organizing Python code</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
             
-              <a href="https://github.com/coderefinery/python-for-scicomp/blob/master/search" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/coderefinery/python-for-scicomp/blob/master/organizing-code.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -167,23 +167,50 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <noscript>
-  <div id="fallback" class="admonition warning">
-    <p class="last">
-      Please activate JavaScript to enable the search functionality.
-    </p>
-  </div>
-  </noscript>
+  <div class="section" id="organizing-python-code">
+<h1>Organizing Python code<a class="headerlink" href="#organizing-python-code" title="Permalink to this headline">¶</a></h1>
+<p>Start Python scripts with</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+</pre></div>
+</div>
+<p>This ensures you get the correct python3 for the environment you are
+using.</p>
+<p>In general, don’t put executable statements directly into the top
+level scope in your files (modules), as this code is then run if you
+try to import the module.</p>
+<p>Instead, use this common idiom:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="c1"># your code goes here</span>
+</pre></div>
+</div>
+<p>When developing code it’s often convenient to be able to reload a
+module into your IPython (or IPython notebook) session without having
+to restart the entire session. This can be done with the <code class="docutils literal notranslate"><span class="pre">reload</span></code>
+function:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">importlib</span> <span class="kn">import</span> <span class="n">reload</span>
+<span class="kn">import</span> <span class="nn">foo</span>
+<span class="n">foo</span><span class="o">.</span><span class="n">bar</span><span class="p">()</span>
+<span class="c1"># Edit foo.py</span>
+<span class="n">reload</span><span class="p">(</span><span class="n">foo</span><span class="p">)</span>
+<span class="n">foo</span><span class="o">.</span><span class="n">bar</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
 
-  
-  <div id="search-results">
-  
-  </div>
 
            </div>
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../exercises-1/" class="btn btn-neutral float-right" title="Exercises 1" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../intro-to-python/" class="btn btn-neutral float-left" title="Introduction to Python" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -223,14 +250,7 @@
   
   
     
-  
-  <script type="text/javascript">
-    jQuery(function() { Search.loadIndex("../searchindex.js"); });
-  </script>
-  
-  <script type="text/javascript" id="searchindexloader"></script>
    
-
 
 </body>
 </html>

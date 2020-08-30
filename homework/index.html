@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Search &mdash; LESSON NAME  documentation</title>
+  <title>Homework: 2D Ising model &mdash; LESSON NAME  documentation</title>
   
 
   
@@ -23,7 +23,6 @@
   
 
   
-    
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -42,9 +41,9 @@
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-    <script type="text/javascript" src="../_static/searchtools.js"></script>
     <link rel="index" title="Index" href="../genindex/" />
-    <link rel="search" title="Search" href="#" /> 
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="prev" title="Other useful Scientific Python libraries" href="../see-also/" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -71,7 +70,7 @@
 
           
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="#" method="get">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -90,7 +89,7 @@
             
             
               <p class="caption"><span class="caption-text">The lesson</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../intro-to-python/">Introduction to Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../organizing-code/">Organizing Python code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises-1/">Exercises 1</a></li>
@@ -99,7 +98,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../matplotlib/">Matplotlib</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demo-app/">Demo application</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../see-also/">Other useful Scientific Python libraries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../homework/">Homework: 2D Ising model</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Homework: 2D Ising model</a></li>
 </ul>
 
             
@@ -146,14 +145,14 @@
     
       <li><a href="../" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Search</li>
+      <li>Homework: 2D Ising model</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
             
-              <a href="https://github.com/coderefinery/python-for-scicomp/blob/master/search" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/coderefinery/python-for-scicomp/blob/master/homework.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -167,23 +166,53 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <noscript>
-  <div id="fallback" class="admonition warning">
-    <p class="last">
-      Please activate JavaScript to enable the search functionality.
-    </p>
-  </div>
-  </noscript>
+  <div class="section" id="homework-2d-ising-model">
+<h1>Homework: 2D Ising model<a class="headerlink" href="#homework-2d-ising-model" title="Permalink to this headline">¶</a></h1>
+<p>This homework exercise shares many similarities with the XY model
+studied above.  The main difference is that in the 2D Ising model, the
+spins are perpendicular to the plane, and can take only two values,
+<code class="docutils literal notranslate"><span class="pre">+1</span></code> and <code class="docutils literal notranslate"><span class="pre">-1</span></code>. This model can be used to study the ferromagnetic
+phase transition. Below the critical temperature ferromagnetic
+domains, where the spins are aligned, form. Above the critical
+temperature this order breaks down. In the Ising model the
+configuration energy is defined as</p>
+<div class="math notranslate nohighlight">
+\[E = - J \sum_{i \ne j} \sigma_i \sigma_j - \mu H \sum_j \sigma_j,\]</div>
+<p>where J is the exchange energy, <span class="math notranslate nohighlight">\(\mu\)</span> is the magnetic moment of
+the spins, and H is the external magnetic field in the direction
+perpendicular to the plane. To simplify, you can set J and <span class="math notranslate nohighlight">\(\mu\)</span>
+to 1.</p>
+<p>Implement a simulation program simulating the 2D Ising model. Use the
+Metropolis-Hastings Monte Carlo algorithm. Visualize the results with
+matplotlib. Run the simulation at different temperatures and with
+different starting configurations (random vs. ordered), and see if you
+can find the critical temperature by observing your visualizations.</p>
+<p>If you find the above too easy, a few topics for further
+exploration. Not needed to pass the course.</p>
+<ul class="simple">
+<li><p>Implement the Wolff algorithm, which flips whole clusters at a time
+instead of individual spins.  This helps avoid a phenomena called
+<em>critical slowing down</em> close to the critical temperature, which is
+problematic for algorithms such as the Metropolis algorithm that
+flip one spin at a time.</p></li>
+<li><p>Calculate and plot the net magnetization, the magnetic
+susceptibility, and the heat capacity of the system as a function of
+the temperature. How do they behave around the critical temperature?</p></li>
+</ul>
+</div>
 
-  
-  <div id="search-results">
-  
-  </div>
 
            </div>
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../see-also/" class="btn btn-neutral float-left" title="Other useful Scientific Python libraries" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -223,14 +252,7 @@
   
   
     
-  
-  <script type="text/javascript">
-    jQuery(function() { Search.loadIndex("../searchindex.js"); });
-  </script>
-  
-  <script type="text/javascript" id="searchindexloader"></script>
    
-
 
 </body>
 </html>
