@@ -102,8 +102,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../libraries/">Library ecosystem</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dependencies/">Dependency management</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Binder</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#exercise">Exercise</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id1">Exercise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#why-isn-t-enough-to-share-your-code">Why isn’t enough to share your code?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Binder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-can-i-share-my-computing-environment-with-mybinder">How can I share my computing environment with myBinder?</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../organizing-code/">Organizing Python code</a></li>
@@ -202,18 +203,40 @@
 <li><p>Learn to create and share custom computing environments with myBinder</p></li>
 </ul>
 </div>
-<div class="section" id="exercise">
-<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="why-isn-t-enough-to-share-your-code">
+<h2>Why isn’t enough to share your code?<a class="headerlink" href="#why-isn-t-enough-to-share-your-code" title="Permalink to this headline">¶</a></h2>
+<p>Before we work in group and write our thoughts on why we need more than sharing our codes for reproducible research, let’s take an example from geospatial analysis where the first <cite>import</cite> in the code would be:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">osgeo</span> <span class="kn">import</span> <span class="n">ogr</span><span class="p">,</span> <span class="n">osr</span><span class="p">,</span> <span class="n">gdal</span>
+</pre></div>
+</div>
+<p>Depending on how you install this python package, it may be necessary to have <cite>libgdal</cite> and its development headers already installed on your system; with information on the version you have used, etc.</p>
+<div class="admonition-challenge challenge admonition">
+<p class="admonition-title">Challenge</p>
 <p>Lea is a PhD student in computational biology and after 2 years of intensive work, she is finally ready to publish her first paper. The code she has used for analyzing her data is available on github but her supervisor who is an advocate of Open Science told her that sharing code is not sufficient.</p>
-<ul class="simple">
+<ol class="arabic simple">
 <li><p>Why isn’t enough to share your code?</p></li>
-</ul>
+</ol>
 <p>We form small groups (4-5 persons) and discuss in groups. If the workshop is online, each group will join a breakout room.</p>
 <p>Each group write a summary (bullet points) of the discussion in the workshop shared document (the link will be provided by your instructors).</p>
 </div>
+</div>
 <div class="section" id="id1">
-<h2>Exercise<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>Binder<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://mybinder.readthedocs.io/en/latest/">Binder</a> allows you to create custom computing environments that can be shared and used by many remote users. It uses  <a class="reference external" href="https://repo2docker.readthedocs.io/en/latest/">repo2docker</a>  to create a container image (<a class="reference external" href="https://www.docker.com/">docker</a> image) of a project using information contained in included configuration files.</p>
+<p>Repo2docker is a standalone package that you can install locally on your laptop but an <a class="reference external" href="https://mybinder.org/">online Binder</a> service is freely available. This is what we will be using in the tutorial.</p>
+</div>
+<div class="section" id="how-can-i-share-my-computing-environment-with-mybinder">
+<h2>How can I share my computing environment with myBinder?<a class="headerlink" href="#how-can-i-share-my-computing-environment-with-mybinder" title="Permalink to this headline">¶</a></h2>
 <p>The main objective of this exercise is to learn to fork a repository and add a requirement file to share the computational environment with myBinder.</p>
+<p>..image:: <a class="reference external" href="https://opendreamkit.org/public/images/use-cases/reproducible_logbook.png">https://opendreamkit.org/public/images/use-cases/reproducible_logbook.png</a></p>
+<p>Credit: <a class="reference external" href="https://opendreamkit.org/2017/11/02/use-case-publishing-reproducible-notebooks/">Juliette Taka, Logilab and the OpenDreamKit project (2017)</a></p>
+<div class="admonition-challenge challenge admonition">
+<p class="admonition-title">Challenge</p>
+<ol class="arabic simple">
+<li><p>Fork <a href="#id3"><span class="problematic" id="id4">`</span></a>the following github repository</p></li>
+</ol>
+</div>
+<p>&lt;<a class="reference external" href="https://github.com/coderefinery/binder-exercise">https://github.com/coderefinery/binder-exercise</a>&gt;`_. In the top-right corner of the page, click Fork.</p>
 <div class="admonition-keypoints keypoints admonition">
 <p class="admonition-title">Keypoints</p>
 <ul class="simple">
