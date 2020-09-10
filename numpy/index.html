@@ -265,15 +265,15 @@ largest positive number, and if so, why?</p></li>
 the most common ones:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>      <span class="c1"># 2x3 array with all elements 0</span>
 <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nb">bool</span><span class="p">)</span> <span class="c1"># 3x2 boolean array</span>
-<span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>          <span class="c1"># Evenly spaced values in an interval</span>
-<span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">..</span><span class="p">)</span>       <span class="c1"># similar to above</span>
+<span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>         <span class="c1"># Evenly spaced values in an interval</span>
+<span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>   <span class="c1"># similar to above... but what is the difference?</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="numpy-array-slicing-syntax">
 <h2>NumPy array slicing syntax<a class="headerlink" href="#numpy-array-slicing-syntax" title="Permalink to this headline">¶</a></h2>
 <p>NumPy provides a convenient array syntax to reference subarrays,
-similar to MATLAB for Fortran.</p>
+similar to MATLAB or Fortran.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">[</span><span class="n">low</span><span class="p">:</span><span class="n">high</span><span class="p">:</span><span class="n">step</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -398,7 +398,7 @@ negative numbers.</p></li>
 <li><p>Recall the identity <span class="math notranslate nohighlight">\(\sin^2(x) + \cos^2(x) = 1\)</span>. Create a
 random 4x4 array with values in the range [0, 10). Now test the
 equality with <code class="docutils literal notranslate"><span class="pre">np.equal</span></code>. What result do you get with
-<code class="docutils literal notranslate"><span class="pre">np.allclose``instead</span> <span class="pre">of</span> <span class="pre">``np.equal</span></code>?</p></li>
+<code class="docutils literal notranslate"><span class="pre">np.allclose</span></code> instead of <code class="docutils literal notranslate"><span class="pre">np.equal</span></code>?</p></li>
 <li><p>Create a 1D array with 10 random elements. Sort it.</p></li>
 <li><p>What’s the difference between <code class="docutils literal notranslate"><span class="pre">np_array.sort()</span></code> and
 <code class="docutils literal notranslate"><span class="pre">np.sort(np_array)</span></code>?</p></li>
