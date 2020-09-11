@@ -98,6 +98,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../jupyter/">Jupyter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../numpy/">Enter NumPy</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Matplotlib</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#why-are-we-learning-matplotlib">Why are we learning matplotlib?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rendering-figures-in-jupyter-and-on-a-remote-server">Rendering figures in Jupyter and on a remote server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matplotlib-has-two-different-interfaces">Matplotlib has two different interfaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#parts-of-a-figure">Parts of a figure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#exercise-4-1">Exercise 4.1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#exercise-4-2">Exercise 4.2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#exercise-4-3">Exercise 4.3</a></li>
@@ -202,10 +206,20 @@
 <div class="admonition-objectives objectives admonition">
 <p class="admonition-title">Objectives</p>
 <ul class="simple">
-<li><p>O1</p></li>
-<li><p>O2</p></li>
+<li><p>Know it exists</p></li>
+<li><p>Make a simple plot</p></li>
+<li><p>Know about object-oriented vs stateful interface</p></li>
+<li><p>Headless rendering by setting backend</p></li>
+<li><p>Know about other tools: seaborn, plotly, altair</p></li>
+<li><p>Be able to adapt gallery examples</p></li>
 </ul>
 </div>
+<div class="section" id="why-are-we-learning-matplotlib">
+<h2>Why are we learning matplotlib?<a class="headerlink" href="#why-are-we-learning-matplotlib" title="Permalink to this headline">¶</a></h2>
+<p>While python offers a large range of python packages for plotting
+spatio-temporal data, we will focus here on the most generic python interface
+to create maps. Most of other python packages used for plotting spatio-temporal
+data are based on matplotlib.</p>
 <p>Matplotlib is the ‘standard’ Python plotting library. It is quite
 full-featured, and provides a MATLAB-like plotting API.</p>
 <p>To use it, typically you start with</p>
@@ -223,6 +237,34 @@ full-featured, and provides a MATLAB-like plotting API.</p>
 </div>
 <p>which will cause matplotlib plots to appear inline in the
 notebooks. Very convenient for quick analysis!</p>
+</div>
+<div class="section" id="rendering-figures-in-jupyter-and-on-a-remote-server">
+<h2>Rendering figures in Jupyter and on a remote server<a class="headerlink" href="#rendering-figures-in-jupyter-and-on-a-remote-server" title="Permalink to this headline">¶</a></h2>
+<p>Basically, the steps needed to run it on a remote server, when you
+don’t have a display (‘headless’ jargon).  Occassionally we get people
+with this problem:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;Agg&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We need also instructions for Jupyter.</p>
+</div>
+<div class="section" id="matplotlib-has-two-different-interfaces">
+<h2>Matplotlib has two different interfaces<a class="headerlink" href="#matplotlib-has-two-different-interfaces" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>The first mimics MATLAB plotting and uses the pylab interface.</p></li>
+<li><p>The second option is an object-oriented interface which is much more powerful.</p></li>
+</ul>
+<p>When plotting with matplotlib, it is very important to know and understand that there are two approaches even though the reasons of this dual approach is outside the scope of this lesson.</p>
+<p>When searching for help on the internet, you will find solutions where the two approaches are mixed which may be very confusing for you. The best for new codes is to stick to the object-oriented interface and this is what we will show in this lesson.</p>
+<p><strong>New matplotlib users should learn and use the object oriented interface.</strong></p>
+<div class="admonition-instructor-note instructor-note admonition">
+<p class="admonition-title">Instructor note</p>
+<ul class="simple">
+<li><p>Demonstrate same code with OO and stateful</p></li>
+<li><p>Exercise: convert between them</p></li>
+</ul>
+</div>
 <p>Matplotlib has two slightly different interfaces, a state machine
 interface similar to MATLAB and an object based interface. The state
 machine interface is quick and easy to get started, but since it’s
@@ -272,6 +314,15 @@ interface.</p>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
+</div>
+</div>
+<div class="section" id="parts-of-a-figure">
+<h2>Parts of a figure<a class="headerlink" href="#parts-of-a-figure" title="Permalink to this headline">¶</a></h2>
+<p>It may be useful to show
+<a class="reference external" href="https://matplotlib.org/faq/usage_faq.html#parts-of-a-figure">https://matplotlib.org/faq/usage_faq.html#parts-of-a-figure</a></p>
+<p>Understanding the notion of Figure, axes, etc. is quite useful. the approach in
+python is different from R and R users may be a bit confused without some basic
+principles on how to build a figure with matplotlib.</p>
 </div>
 <div class="section" id="exercise-4-1">
 <h2>Exercise 4.1<a class="headerlink" href="#exercise-4-1" title="Permalink to this headline">¶</a></h2>
