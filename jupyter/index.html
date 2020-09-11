@@ -96,6 +96,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../python/">Introduction to Python</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Jupyter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-jupyter">What is Jupyter?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#getting-started-with-jupyter">Getting started with Jupyter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#running-code-in-jupyter">Running code in Jupyter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#jupyter-pitfalls">Jupyter pitfalls</a></li>
@@ -174,7 +175,7 @@
         
             
             
-              <a href="https://github.com/AaltoSciComp/python-for-scicomp/blob/master/jupyter.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/AaltoSciComp/python-for-scicomp/blob/master/jupyter.ipynb" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -193,22 +194,32 @@
 <div class="admonition-questions questions admonition">
 <p class="admonition-title">Questions</p>
 <ul class="simple">
-<li><p>Q1</p></li>
-<li><p>Q2</p></li>
+<li><p>What is the purpose of a “Computational narrative”?</p></li>
+<li><p>What role does Jupyter play in development?</p></li>
 </ul>
 </div>
 <div class="admonition-objectives objectives admonition">
 <p class="admonition-title">Objectives</p>
 <ul class="simple">
-<li><p>Be able to use Jupyter to run examples for the rest of the course</p></li>
+<li><p>Be able to use Jupyter to run examples for the rest of the course.</p></li>
 <li><p>Be able to run Jupyter in a directory do your own work.</p></li>
+<li><p>You won’t be a Jupyter expert after this, but should be able to do the rest of the course.</p></li>
 </ul>
+</div>
+<div class="section" id="what-is-jupyter">
+<h2>What is Jupyter?<a class="headerlink" href="#what-is-jupyter" title="Permalink to this headline">¶</a></h2>
+<p>Jupyter is a web-based interactive computing system.  It is most well known for having the <em>notebook file format</em> and Jupyter Notebook / Jupyter Lab.  A notebook format contains both the input and the output of the code along documentation, all interleaved to create what is called a <em>computational narrative</em>.</p>
+<p>Jupyter is good for</p>
 </div>
 <div class="section" id="getting-started-with-jupyter">
 <h2>Getting started with Jupyter<a class="headerlink" href="#getting-started-with-jupyter" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Start JupyterLab: there are different ways.  From the command line, activate your anaconda environment and run <code class="docutils literal notranslate"><span class="pre">jupyter-lab</span></code>.  You can also start in from Anaconda Navigator.</p></li>
+</ul>
+<p>For practical purposes, JupyterLab is an integrated development environment that combines file browsing, notebooks, and code editing.</p>
 <div class="admonition-challenge challenge admonition">
 <p class="admonition-title">Challenge</p>
-<ol class="arabic simple">
+<ol class="simple">
 <li><p>Start Jupyter.</p></li>
 <li><p>Create a notebook file.</p></li>
 <li><p>What directory does Jupyter show you.  How can you access
@@ -224,10 +235,10 @@ reading the next sections independently.</p>
 <h2>Running code in Jupyter<a class="headerlink" href="#running-code-in-jupyter" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-challenge challenge admonition">
 <p class="admonition-title">Challenge</p>
-<ol class="arabic simple">
+<ol class="simple">
 <li><p>Run some trivial code, such as <code class="docutils literal notranslate"><span class="pre">print(1)</span></code>.</p></li>
 <li><p>Run some slightly less trivial code, like print out the first
-ten <a class="reference external" href="https://en.wikipedia.org/wiki/Fibonacci_number">Fibonacci numbers</a>.</p></li>
+ten <code class="docutils literal notranslate"><span class="pre">Fibonacci</span> <span class="pre">numbers</span> <span class="pre">&lt;https://en.wikipedia.org/wiki/Fibonacci_number&gt;</span></code>__.</p></li>
 <li><p>Make a Markdown cell and give it a title and some description of
 your function</p></li>
 <li><p>Use the <code class="docutils literal notranslate"><span class="pre">%%timeit</span></code> magic function to time your Fibonacci
@@ -239,21 +250,41 @@ numbers 0 to 1000000.</p></li>
 </div>
 <div class="section" id="jupyter-pitfalls">
 <h2>Jupyter pitfalls<a class="headerlink" href="#jupyter-pitfalls" title="Permalink to this headline">¶</a></h2>
+<p>Jupyter is great for many things, but there are some problems if not used well:</p>
+<ul class="simple">
+<li><p>They <strong>don’t promote modularity</strong>, and once you get started in a
+notebook it can be hard to migrate to modules.</p></li>
+<li><p>They are <strong>difficult to test</strong>.  There are things to run notebooks as
+unit tests like <a class="reference external" href="https://nbval.readthedocs.io/">nbval</a>, but it’s not
+perfect.</p></li>
+<li><p>Notebooks can be <strong>version controlled</strong>
+(<a class="reference external" href="https://nbdime.readthedocs.io/">nbdime</a> helps with that), but
+there are <strong>still limitations</strong>.</p></li>
+<li><p>You can <strong>change code after you run it</strong> and run code out of order.
+This can make debugging hard and results irreproducible if you
+aren’t careful.</p></li>
+<li><p>Notebooks <strong>aren’t named by default</strong> and tend to <strong>acquire a bunch of
+unrelated stuff</strong>.  Be careful with organization!</p></li>
+<li><p>Once lots of code is in notebooks, it can be <strong>hard to change to
+proper programs that can be scripted</strong>.</p></li>
+</ul>
+<p>You can read more about these downsides <a class="reference external" href="https://scicomp.aalto.fi/scicomp/jupyter-pitfalls/">https://scicomp.aalto.fi/scicomp/jupyter-pitfalls/</a>.</p>
+<p><strong>But these downsides aren’t specific to Jupyter!</strong>  They can easily happen in other sources, too.  By studying these, you can make any code better, and find the right balance for what you do.</p>
 <div class="admonition-challenge challenge admonition">
 <p class="admonition-title">Challenge</p>
 <p>(optional) Discuss the following in groups:</p>
-<ol class="arabic simple">
+<ol class="simple">
 <li><p>Have any of you used Jupyter in a way that became impossible to
 maintain: too many files, code all spread out, not able to find
 your code and run it in the right order.  How did you solve that?</p></li>
 <li><p>On the other hand, what are your successes with Jupyter?</p></li>
+<li><p>How can you prevent these problems by better development strategies?</p></li>
 </ol>
 </div>
 <div class="admonition-keypoints keypoints admonition">
 <p class="admonition-title">Keypoints</p>
 <ul class="simple">
-<li><p>K1</p></li>
-<li><p>K2</p></li>
+<li><p>Jupyter is powerful and can be used for most work, but not the end solution of all problems</p></li>
 </ul>
 </div>
 </div>
