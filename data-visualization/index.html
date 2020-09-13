@@ -99,7 +99,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../numpy/">NumPy</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Data visualization with Matplotlib</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#repeatability-reproducibility">Repeatability/reproducibility</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#why-are-we-learning-matplotlib">Why are we learning matplotlib?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#why-are-we-learning-matplotlib">Why are we learning Matplotlib?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#getting-started-with-matplotlib">Getting started with Matplotlib</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#matplotlib-has-two-different-interfaces">Matplotlib has two different interfaces</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#styling-and-customizing-plots">Styling and customizing plots</a></li>
@@ -191,19 +191,18 @@
 <div class="admonition-questions questions admonition">
 <p class="admonition-title">Questions</p>
 <ul class="simple">
-<li><p>Q1</p></li>
-<li><p>Q2</p></li>
+<li><p>When to use Matplotlib for data visualization?</p></li>
+<li><p>When to prefer other libraries?</p></li>
 </ul>
 </div>
 <div class="admonition-objectives objectives admonition">
 <p class="admonition-title">Objectives</p>
 <ul class="simple">
-<li><p>Know it exists</p></li>
-<li><p>Make a simple plot</p></li>
-<li><p>Know about object-oriented vs stateful interface</p></li>
-<li><p>Headless rendering by setting backend</p></li>
-<li><p>Know about other tools: seaborn, plotly, altair</p></li>
+<li><p>Be able to create simple plots and tweak them</p></li>
+<li><p>Know about object-oriented vs pyplot interfaces of Matplotlib</p></li>
 <li><p>Be able to adapt gallery examples</p></li>
+<li><p>Know how to look for help</p></li>
+<li><p>Know that other tools exist</p></li>
 </ul>
 </div>
 <div class="section" id="repeatability-reproducibility">
@@ -235,14 +234,14 @@ and many others.</p></li>
 </ul>
 </div>
 <div class="section" id="why-are-we-learning-matplotlib">
-<h2>Why are we learning matplotlib?<a class="headerlink" href="#why-are-we-learning-matplotlib" title="Permalink to this headline">¶</a></h2>
+<h2>Why are we learning Matplotlib?<a class="headerlink" href="#why-are-we-learning-matplotlib" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Matplotlib is perhaps the most “standard” Python plotting library.</p></li>
 <li><p>Many libraries build on top of Matplotlib.</p></li>
 <li><p>MATLAB users will feel familiar.</p></li>
 <li><p>Even if you choose to use another library (see above list), chances are high
 that you need to adapt a Matplotlib plot of somebody else.</p></li>
-<li><p>Libraries that built on top of Matplotlib may need knowledge of Matplotlib
+<li><p>Libraries that are built on top of Matplotlib may need knowledge of Matplotlib
 for custom adjustments.</p></li>
 </ul>
 </div>
@@ -278,8 +277,8 @@ to show the generated figure in the notebook, we don’t need this when running 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>We also added <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> to show the figure on screen. We did not need this
-in a Jupyter notebook.</p>
+<p>This code snipped also contains <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> to show the figure on screen. We
+did not need this in a Jupyter notebook.</p>
 <p>When running a Matplotlib script on a remote server without a “display” (e.g.
 compute cluster), you may need to add this line:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -349,7 +348,7 @@ there are <strong>two approaches</strong> even though the reasons of this dual a
 outside the scope of this lesson.</p>
 <ul class="simple">
 <li><p>The more modern option is an <strong>object-oriented interface</strong> (the <code class="docutils literal notranslate"><span class="pre">fig</span></code> and <code class="docutils literal notranslate"><span class="pre">ax</span></code> objects
-can be configured and passed around):</p></li>
+can be configured separately and passed around to functions):</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
@@ -444,7 +443,6 @@ calls.</p>
 <h2>Styling and customizing plots<a class="headerlink" href="#styling-and-customizing-plots" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Matplotlib allows to customize almost every aspect of a plot.</p></li>
-<li><p>Do not customize manually using a graphical program (not easily repeatable/reproducible).</p></li>
 <li><p>It is useful to study <a class="reference external" href="https://matplotlib.org/faq/usage_faq.html#parts-of-a-figure">Matplotlib parts of a figure</a>
 so that we know what to search for to customize things.</p></li>
 <li><p>You can also select among pre-defined themes/
@@ -453,9 +451,12 @@ so that we know what to search for to customize things.</p></li>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;ggplot&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+<ul class="simple">
+<li><p><strong>Do not customize “manually”</strong> using a graphical program (not easily repeatable/reproducible).</p></li>
+</ul>
 <div class="admonition-exercise-4-3 challenge admonition">
 <p class="admonition-title">Exercise 4.3</p>
-<p>In this exercise we will learn how to use log scale.
+<p>In this exercise we will learn how to use log scales.
 To demonstrate this we first fetch some data to plot:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># we use plotly, a different visualization library (more about this later)</span>
 <span class="c1"># to fetch some data</span>
@@ -466,7 +467,10 @@ To demonstrate this we first fetch some data to plot:</p>
 <span class="n">data</span>
 </pre></div>
 </div>
-<p>Then we can plot the data, first using a linear scale:</p>
+<ul class="simple">
+<li><p>Try the above snippet in a notebook and it will give you an overview over the data.</p></li>
+<li><p>Then we can plot the data, first using a linear scale:</p></li>
+</ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;gdpPercap&quot;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;lifeExp&quot;</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
@@ -528,9 +532,9 @@ and web search, and to arrive at this:</p>
 <p><a class="reference external" href="https://matplotlib.org/">Matplotlib</a> is probably the most standard and most
 widely used library.  However it is a relatively low-level interface for
 drawing (in terms of abstractions, not in terms of quality) and does not
-provide statistical functions.</p>
-<p>Many libraries exist with their own strengths, it is also a matter of personal
-preferences:</p>
+provide statistical functions. Some figures require typing and tweaking many lines of code.</p>
+<p>Many other visualization libraries exist with their own strengths, it is also a
+matter of personal preferences:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://seaborn.pydata.org/">Seaborn</a>: high-level interface to
 Matplotlib, statistical functions built in.</p></li>
@@ -541,7 +545,7 @@ will be more at home), statistics built in.</p></li>
 <li><p><a class="reference external" href="https://yhat.github.io/ggpy/">ggplot</a>: R users will be more at home.</p></li>
 <li><p><a class="reference external" href="https://www.pyngl.ucar.edu/">PyNGL</a>: used in the weather forecast community.</p></li>
 </ul>
-<p>What many people do (including the instructor) is to browse existing example
+<p>What many people do (including the present instructor) is to browse existing example
 galleries for inspiration and to start with an example that is already close to
 what we have in mind and then to replace the example with own data and to
 customize the looks.</p>
@@ -565,13 +569,15 @@ customize the looks.</p>
 <li><p>Browse the various example galleries (links above).</p></li>
 <li><p>Take an example that is close to your recent visualization project or simply interests you.</p></li>
 <li><p>Try to reproduce this example in the Jupyter notebook.</p></li>
+<li><p>If you have time, try to tweak it.</p></li>
 </ul>
 </div>
 <div class="admonition-keypoints keypoints admonition">
 <p class="admonition-title">Keypoints</p>
 <ul class="simple">
-<li><p>K1</p></li>
-<li><p>K2</p></li>
+<li><p>Avoid manual post-processing, script everything.</p></li>
+<li><p>Browse a number of example galleries to help you choose the library that fits best your work/style.</p></li>
+<li><p>Figures for presentation slides and figures for manuscripts have different requirements.</p></li>
 </ul>
 </div>
 </div>
