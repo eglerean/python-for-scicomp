@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Enter NumPy &mdash; Python for Scientific Computing  documentation</title>
+  <title>NumPy &mdash; Python for Scientific Computing  documentation</title>
   
 
   
@@ -96,7 +96,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../python/">Introduction to Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../jupyter/">Jupyter</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Enter NumPy</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">NumPy</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#what-is-an-array">What is an array?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#creating-arrays">Creating arrays</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#array-maths">Array maths</a></li>
@@ -178,7 +178,7 @@
     
       <li><a href="../" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Enter NumPy</li>
+      <li>NumPy</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -199,8 +199,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="enter-numpy">
-<h1>Enter NumPy<a class="headerlink" href="#enter-numpy" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="numpy">
+<h1>NumPy<a class="headerlink" href="#numpy" title="Permalink to this headline">¶</a></h1>
 <div class="admonition-questions questions admonition">
 <p class="admonition-title">Questions</p>
 <ul class="simple">
@@ -215,21 +215,13 @@
 <li><p>Understand enough of numpy to seach for answers to the rest of your questions ;)</p></li>
 </ul>
 </div>
-<dl class="simple">
-<dt>TODO:</dt><dd><ul class="simple">
-<li><p>Why is the array data structure good?</p></li>
-<li><p>Slice arrays, basic and fancy -&gt; more examples?</p></li>
-<li><p>Types of operations: scalar, ufunc, methods, functions + broadcasting?</p></li>
-</ul>
-</dd>
-</dl>
 <p>So, we already know about python lists, and that we can put all kinds of things in there.
 But in scientific usage, lists are often not enough. They are slow and
 not very flexible.</p>
 <div class="section" id="what-is-an-array">
 <h2>What is an array?<a class="headerlink" href="#what-is-an-array" title="Permalink to this headline">¶</a></h2>
 <p>For example, consider <cite>[1, 2.5, ‘asdf’, False, [1.5, True]]</cite> -
-this is a Python string, but it has different types for every
+this is a Python list but it has different types for every
 element.  When you do math on this, every element has to be handled separately.</p>
 <p>Numpy is the most used library for scientific computing.
 (Even if you are not using it directly, chances are high that some library uses it in the background)
@@ -243,7 +235,7 @@ dimensions.  An array has:</p>
 <cite>500</cite> (one dimensional) or <cite>[]</cite> (zero dimensional).</p></li>
 <li><p><cite>data</cite> - raw data storage in memory.  This can be passed to C or
 Fortran code for efficient calculations.</p></li>
-<li><p>TODO: List vs array performance demonstration</p></li>
+<li><p>TODO: List vs array performance demonstration using %timeit similar to: <a class="reference external" href="https://webcourses.ucf.edu/courses/1249560/pages/python-lists-vs-numpy-arrays-what-is-the-difference">https://webcourses.ucf.edu/courses/1249560/pages/python-lists-vs-numpy-arrays-what-is-the-difference</a></p></li>
 </ul>
 </div>
 <div class="section" id="creating-arrays">
@@ -292,7 +284,7 @@ important things to do for speed.</p>
 <li><p><strong>NumpyI/O</strong> Save above array to .npy file (np.save) and read it in again.</p></li>
 </ul>
 </div>
-<div class="admonition-solution solution admonition">
+<div class="admonition-solution solution dropdown admonition">
 <p class="admonition-title">Solution</p>
 <ul class="simple">
 <li><p><strong>Datatypes</strong> <code class="docutils literal notranslate"><span class="pre">np.arange(10)</span></code> results in <code class="docutils literal notranslate"><span class="pre">array([0,</span> <span class="pre">1,</span> <span class="pre">2,</span> <span class="pre">3,</span> <span class="pre">4,</span> <span class="pre">5,</span> <span class="pre">6,</span> <span class="pre">7,</span> <span class="pre">8,</span> <span class="pre">9])</span></code> with dtype <strong>int64</strong>,</p></li>
@@ -326,16 +318,16 @@ array multiplication.  Numpy values consistency and does not treat
 <div class="admonition-challenge challenge admonition">
 <p class="admonition-title">Challenge</p>
 <ul class="simple">
-<li><p><strong>Matrix multiplication</strong> What is the difference between <code class="docutils literal notranslate"><span class="pre">np.multiply</span></code> and <code class="docutils literal notranslate"><span class="pre">np.dot</span></code> ?</p></li>
+<li><p><strong>Matrix multiplication</strong> What is the difference between <code class="docutils literal notranslate"><span class="pre">np.multiply</span></code> and <code class="docutils literal notranslate"><span class="pre">np.dot</span></code> ? Try it.</p></li>
 <li><p><strong>Axis</strong> What is the difference between <code class="docutils literal notranslate"><span class="pre">np.sum(axis=1)</span></code> vs
-<code class="docutils literal notranslate"><span class="pre">np.sum(axis=0)</span></code> on a two-dimensional array?</p></li>
+<code class="docutils literal notranslate"><span class="pre">np.sum(axis=0)</span></code> on a two-dimensional array? What if you leave out the axis parameter?</p></li>
 </ul>
 </div>
-<div class="admonition-solution solution admonition">
+<div class="admonition-solution solution dropdown admonition">
 <p class="admonition-title">Solution</p>
 <ul class="simple">
-<li><p><strong>Matrix multiplication</strong></p></li>
-<li><p><strong>Axis</strong></p></li>
+<li><p><strong>Matrix multiplication</strong> <code class="docutils literal notranslate"><span class="pre">np.multiply</span></code> does elementwise multiplication on two arrays, while <code class="docutils literal notranslate"><span class="pre">np.dot</span></code> enables matrix multiplication.</p></li>
+<li><p><strong>Axis</strong> axis=1 does the operation (here: <code class="docutils literal notranslate"><span class="pre">np.sum</span></code>) over each row, while axis=0 does it over each column. If axis is left out, the sum of the full array is given.</p></li>
 </ul>
 </div>
 </div>
@@ -379,7 +371,7 @@ speed of C.</p>
 <li><p><strong>View vs copy</strong> Try out above code. How does a look like before b has changed and after? How could it be avoided?</p></li>
 </ul>
 </div>
-<div class="admonition-solution solution admonition">
+<div class="admonition-solution solution dropdown admonition">
 <p class="admonition-title">Solution</p>
 <ul class="simple">
 <li><p><strong>View vs copy</strong></p></li>
@@ -391,7 +383,7 @@ speed of C.</p>
 <li><p><strong>Numpy functionality</strong> Create two 2D arrays and do matrix multiplication first manually (for loop), then using the <code class="docutils literal notranslate"><span class="pre">np.dot</span></code> function. Use <code class="docutils literal notranslate"><span class="pre">%%timeit</span></code> to compare execution times. What is happening?</p></li>
 </ul>
 </div>
-<div class="admonition-solution solution admonition">
+<div class="admonition-solution solution dropdown admonition">
 <p class="admonition-title">Solution</p>
 <ul class="simple">
 <li><p><strong>Numpy functionality</strong></p></li>
