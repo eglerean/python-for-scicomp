@@ -237,6 +237,29 @@ dimensions.  An array has:</p>
 Fortran code for efficient calculations.</p></li>
 <li><p>TODO: List vs array performance demonstration using %timeit similar to: <a class="reference external" href="https://webcourses.ucf.edu/courses/1249560/pages/python-lists-vs-numpy-arrays-what-is-the-difference">https://webcourses.ucf.edu/courses/1249560/pages/python-lists-vs-numpy-arrays-what-is-the-difference</a></p></li>
 </ul>
+<p>To test the performance of pure Python vs numpy we can write in our jupyter notebook</p>
+<p>Create one list and one ‘empty’ list, to store the result in</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10000</span><span class="p">))</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">0</span> <span class="p">]</span> <span class="o">*</span> <span class="mi">10000</span>
+</pre></div>
+</div>
+<p>In a new cell starting with %%timeit, loop through the list a and fill the second list b with a squared</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">timeit</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)):</span>
+  <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span>
+</pre></div>
+</div>
+<p>For the numpy example, create one array and one ‘empty’ array to store the result in</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In a new cell starting with %%timeit, fill be with a squared</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">timeit</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span> <span class="o">**</span> <span class="mi">2</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="creating-arrays">
 <h2>Creating arrays<a class="headerlink" href="#creating-arrays" title="Permalink to this headline">¶</a></h2>
@@ -412,7 +435,7 @@ make a new array) - saves copying data!</p></li>
 <span class="n">x</span>                    <span class="c1">#  array([[ 0,  1,  2,  3],</span>
                                <span class="p">[</span> <span class="mi">4</span><span class="p">,</span>  <span class="mi">5</span><span class="p">,</span>  <span class="mi">6</span><span class="p">,</span>  <span class="mi">7</span><span class="p">],</span>
                                <span class="p">[</span> <span class="mi">8</span><span class="p">,</span>  <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">]])</span>
-<span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>              <span class="c1">#   11</span>
+<span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>              <span class="c1">#  11</span>
 <span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>        <span class="c1">#  array([ 8,  9, 10, 11])</span>
 <span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>        <span class="c1">#  array([ 3,  7, 11])</span>
 </pre></div>
