@@ -101,13 +101,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#repeatability-reproducibility">Repeatability/reproducibility</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#why-are-we-learning-matplotlib">Why are we learning matplotlib?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#getting-started-with-matplotlib">Getting started with Matplotlib</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#exercise-4-1">Exercise 4.1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#matplotlib-has-two-different-interfaces">Matplotlib has two different interfaces</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#exercise-4-2">Exercise 4.2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#styling-and-customizing-plots">Styling and customizing plots</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#exercise-4-3">Exercise 4.3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#how-to-choose-between-the-many-libraries">How to choose between the many libraries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#exercise-4-5">Exercise 4.5</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../scripts/">Scripts</a></li>
@@ -292,9 +288,8 @@ compute cluster), you may need to add this line:</p>
 <span class="c1"># ... rest of the script</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="exercise-4-1">
-<h2>Exercise 4.1<a class="headerlink" href="#exercise-4-1" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-exercise-4-1 challenge admonition">
+<p class="admonition-title">Exercise 4.1</p>
 <ul>
 <li><p>Extend the previous plot by also plotting this set of values but this time
 using a different color (<code class="docutils literal notranslate"><span class="pre">#56B4E9</span></code>):</p>
@@ -311,7 +306,9 @@ by 2.0.</p></li>
 <img alt="../_images/exercise-4.1.png" src="../_images/exercise-4.1.png" />
 <p>Why these colors? This qualitative color palette is opimized for all color-vision
 deficiencies, see <a class="reference external" href="https://clauswilke.com/dataviz/color-pitfalls.html">https://clauswilke.com/dataviz/color-pitfalls.html</a> and
-<a class="reference external" href="http://jfly.iam.u-tokyo.ac.jp/color/">Okabe, M., and K. Ito. 2008. “Color Universal Design (CUD): How to Make Figures and Presentations That Are Friendly to Colorblind People.”</a>.</p>
+<a class="reference external" href="http://jfly.iam.u-tokyo.ac.jp/color/">Okabe, M., and K. Ito. 2008. “Color Universal Design (CUD):
+How to Make Figures and Presentations That Are Friendly to Colorblind People.”</a>.</p>
+</div>
 </div>
 <div class="section" id="matplotlib-has-two-different-interfaces">
 <h2>Matplotlib has two different interfaces<a class="headerlink" href="#matplotlib-has-two-different-interfaces" title="Permalink to this headline">¶</a></h2>
@@ -359,12 +356,11 @@ the global settings):</p></li>
 <p>When searching for help on the internet, you will find both approaches, they
 can also be mixed. Although the pyplot interface looks more compact, <strong>we
 recommend to learn and use the object oriented interface.</strong></p>
-</div>
-<div class="section" id="exercise-4-2">
-<h2>Exercise 4.2<a class="headerlink" href="#exercise-4-2" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-exercise-4-2 challenge admonition">
+<p class="admonition-title">Exercise 4.2</p>
 <p>Imagine we wanted to learn how to create a histogram and web searched
-“matplotlib plot histogram stack overflow” and found (<a class="reference external" href="https://stackoverflow.com/a/5328669">https://stackoverflow.com/a/5328669</a>):</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+“matplotlib plot histogram stack overflow” and found <a class="reference external" href="https://stackoverflow.com/a/5328669">https://stackoverflow.com/a/5328669</a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">15</span>
@@ -381,6 +377,7 @@ recommend to learn and use the object oriented interface.</strong></p>
 <li><p>Change the number of bins.</p></li>
 <li><p>Convert it from pyplot interface to using the object oriented interface.</p></li>
 </ul>
+</div>
 <div class="admonition-discussion discussion admonition">
 <p class="admonition-title">Discussion</p>
 <p>Why did we do this? One day you may want to write functions which wrap
@@ -408,9 +405,6 @@ python is different from R and R users may be a bit confused without some basic
 principles on how to build a figure with matplotlib.</p>
 <p>Also I will show how to use pre-defined themes.</p>
 </div>
-</div>
-<div class="section" id="exercise-4-3">
-<h2>Exercise 4.3<a class="headerlink" href="#exercise-4-3" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-instructor-note instructor-note admonition">
 <p class="admonition-title">Instructor note</p>
 <p>I will provide an example which is not useful on default scale and the
@@ -434,31 +428,31 @@ will be more at home), statistics built in.</p></li>
 <li><p><a class="reference external" href="https://yhat.github.io/ggpy/">ggplot</a>: R users will be more at home.</p></li>
 <li><p><a class="reference external" href="https://www.pyngl.ucar.edu/">PyNGL</a>: used in the weather forecast community.</p></li>
 </ul>
-</div>
-<div class="section" id="exercise-4-5">
-<h2>Exercise 4.5<a class="headerlink" href="#exercise-4-5" title="Permalink to this headline">¶</a></h2>
 <p>What many people do (including the instructor) is to browse existing example
 galleries for inspiration and to start with an example that is already close to
 what we have in mind and then to replace the example with own data and to
 customize the looks.</p>
+<p>Example galleries and demos:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://seaborn.pydata.org/examples/index.html">Seaborn</a></p></li>
+<li><p><a class="reference external" href="https://altair-viz.github.io/gallery/index.html">Altair</a>
+(not part of default Anaconda installation)</p></li>
+<li><p><a class="reference external" href="https://plotly.com/python/">Plotly</a></p></li>
+<li><p><a class="reference external" href="https://demo.bokeh.org/">Bokeh</a></p></li>
+<li><p><a class="reference external" href="https://yhat.github.io/ggpy/">ggplot</a>
+(not part of default Anaconda installation)</p></li>
+<li><p><a class="reference external" href="https://www.pyngl.ucar.edu/Examples/gallery.shtml">PyNGL</a>
+(not part of default Anaconda installation)</p></li>
+</ul>
 <p>Let’s practice this!</p>
+<div class="admonition-exercise-4-4 challenge admonition">
+<p class="admonition-title">Exercise 4.4</p>
 <ul class="simple">
 <li><p>Browse the various example galleries (links below)</p></li>
 <li><p>Take an example that is close to your recent visualization project or simply interests you</p></li>
 <li><p>Try to reproduce this example in the Jupyter notebook</p></li>
 </ul>
-<p>Example galleries and demos:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://seaborn.pydata.org/examples/index.html">Seaborn</a></p></li>
-<li><p><a class="reference external" href="https://altair-viz.github.io/gallery/index.html">Altair</a>
-(not part of a default Anaconda installation)</p></li>
-<li><p><a class="reference external" href="https://plotly.com/python/">Plotly</a></p></li>
-<li><p><a class="reference external" href="https://demo.bokeh.org/">Bokeh</a></p></li>
-<li><p><a class="reference external" href="https://yhat.github.io/ggpy/">ggplot</a>
-(not part of a default Anaconda installation)</p></li>
-<li><p><a class="reference external" href="https://www.pyngl.ucar.edu/Examples/gallery.shtml">PyNGL</a>
-(not part of a default Anaconda installation)</p></li>
-</ul>
+</div>
 <div class="admonition-keypoints keypoints admonition">
 <p class="admonition-title">Keypoints</p>
 <ul class="simple">
