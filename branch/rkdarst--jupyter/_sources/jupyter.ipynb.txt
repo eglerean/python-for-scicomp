@@ -236,6 +236,8 @@
     "\n",
     "   5. Again using ``%%timeit``, figure out the fastest way to sum the\n",
     "      numbers 0 to 1000000.\n",
+    "      \n",
+    "   6. Once you are done, close your notebooks and other tabs you don't need.  Check the running sessions (hint: thin left sidebar) and shut down these kernels.\n",
     "```\n",
     "\n",
     "`````{solution}\n",
@@ -275,6 +277,8 @@
     "   ```\n",
     "\n",
     "5. --\n",
+    "\n",
+    "6. --\n",
     "\n",
     "`````"
    ]
