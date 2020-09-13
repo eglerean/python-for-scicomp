@@ -192,15 +192,15 @@
 <div class="admonition-questions questions admonition">
 <p class="admonition-title">Questions</p>
 <ul class="simple">
-<li><p>Why using numpy instead of pure python?</p></li>
-<li><p>How to use basic numpy?</p></li>
+<li><p>Why using NumPy instead of pure python?</p></li>
+<li><p>How to use basic NumPy?</p></li>
 </ul>
 </div>
 <div class="admonition-objectives objectives admonition">
 <p class="admonition-title">Objectives</p>
 <ul class="simple">
-<li><p>Be able to use basic numpy functionality</p></li>
-<li><p>Understand enough of numpy to seach for answers to the rest of your questions ;)</p></li>
+<li><p>Be able to use basic NumPy functionality</p></li>
+<li><p>Understand enough of NumPy to seach for answers to the rest of your questions ;)</p></li>
 </ul>
 </div>
 <p>So, we already know about python lists, and that we can put all kinds of things in there.
@@ -208,42 +208,42 @@ But in scientific usage, lists are often not enough. They are slow and
 not very flexible.</p>
 <div class="section" id="what-is-an-array">
 <h2>What is an array?<a class="headerlink" href="#what-is-an-array" title="Permalink to this headline">¶</a></h2>
-<p>For example, consider <cite>[1, 2.5, ‘asdf’, False, [1.5, True]]</cite> -
+<p>For example, consider <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2.5,</span> <span class="pre">'asdf',</span> <span class="pre">False,</span> <span class="pre">[1.5,</span> <span class="pre">True]]</span></code> -
 this is a Python list but it has different types for every
 element.  When you do math on this, every element has to be handled separately.</p>
-<p>Numpy is the most used library for scientific computing.
-(Even if you are not using it directly, chances are high that some library uses it in the background)
-Numpy provides the high-performance multidimensional array object and tools to use it.</p>
+<p>NumPy is the most used library for scientific computing.
+Even if you are not using it directly, chances are high that some library uses it in the background.
+NumPy provides the high-performance multidimensional array object and tools to use it.</p>
 <p>An array is a ‘grid’ of values, with all the same types. It is indexed by tuples of
 non negative indices and provides the framework for multiple
 dimensions.  An array has:</p>
 <ul class="simple">
-<li><p><cite>dtype</cite> - data type.  Arrays always contain one type</p></li>
-<li><p><cite>shape</cite> - shape of the data, for example <cite>3×2</cite> or <cite>3×2×500</cite> or even
-<cite>500</cite> (one dimensional) or <cite>[]</cite> (zero dimensional).</p></li>
-<li><p><cite>data</cite> - raw data storage in memory.  This can be passed to C or
+<li><p><code class="docutils literal notranslate"><span class="pre">dtype</span></code> - data type.  Arrays always contain one type</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">shape</span></code> - shape of the data, for example <code class="docutils literal notranslate"><span class="pre">3×2</span></code> or <code class="docutils literal notranslate"><span class="pre">3×2×500</span></code> or even
+<code class="docutils literal notranslate"><span class="pre">500</span></code> (one dimensional) or <code class="docutils literal notranslate"><span class="pre">[]</span></code> (zero dimensional).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code> - raw data storage in memory.  This can be passed to C or
 Fortran code for efficient calculations.</p></li>
 </ul>
-<p>To test the performance of pure Python vs numpy we can write in our jupyter notebook:</p>
+<p>To test the performance of pure Python vs NumPy we can write in our jupyter notebook:</p>
 <p>Create one list and one ‘empty’ list, to store the result in</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10000</span><span class="p">))</span>
 <span class="n">b</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">0</span> <span class="p">]</span> <span class="o">*</span> <span class="mi">10000</span>
 </pre></div>
 </div>
-<p>In a new cell starting with %%timeit, loop through the list a and fill the second list b with a squared</p>
+<p>In a new cell starting with <code class="docutils literal notranslate"><span class="pre">%%timeit</span></code>, loop through the list <code class="docutils literal notranslate"><span class="pre">a</span></code> and fill the second list <code class="docutils literal notranslate"><span class="pre">b</span></code> with <code class="docutils literal notranslate"><span class="pre">a</span></code> squared</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">timeit</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)):</span>
   <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span>
 </pre></div>
 </div>
-<p>That looks and feels quite fast. But let’s take a look at how numpy performs for the same task.</p>
-<p>So for the numpy example, create one array and one ‘empty’ array to store the result in</p>
+<p>That looks and feels quite fast. But let’s take a look at how NumPy performs for the same task.</p>
+<p>So for the NumPy example, create one array and one ‘empty’ array to store the result in</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>In a new cell starting with %%timeit, fill be with a squared</p>
+<p>In a new cell starting with <code class="docutils literal notranslate"><span class="pre">%%timeit</span></code>, fill <code class="docutils literal notranslate"><span class="pre">b</span></code> with <code class="docutils literal notranslate"><span class="pre">a</span></code> squared</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">timeit</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">a</span> <span class="o">**</span> <span class="mi">2</span>
 </pre></div>
@@ -283,7 +283,7 @@ Fortran code for efficient calculations.</p></li>
 <span class="n">d</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>            <span class="c1"># change datatype from boolean to integer</span>
 </pre></div>
 </div>
-<p>In the last example, <cite>.astype(‘int’)</cite>, it will make a <strong>copy</strong> of the
+<p>In the last example, <code class="docutils literal notranslate"><span class="pre">.astype('int')</span></code>, it will make a <strong>copy</strong> of the
 array, and re-allocate data - unless the dtype is exactly the same as
 before.  Understanding and minimizing copies is one of the most
 important things to do for speed.</p>
@@ -291,9 +291,9 @@ important things to do for speed.</p>
 <p class="admonition-title">Challenge</p>
 <ul class="simple">
 <li><p><strong>Datatypes</strong> Try out <code class="docutils literal notranslate"><span class="pre">np.arange(10)</span></code> and <code class="docutils literal notranslate"><span class="pre">np.linspace(0,9,10)</span></code>, what is the difference? Can you adjust one to do the same as the other?</p></li>
-<li><p><strong>Datatypes</strong> Create a 3x2 array of random float numbers (check np.random) between 0 and 1. Now change the arrays datatype to int (array.astype). How does the array look like?</p></li>
+<li><p><strong>Datatypes</strong> Create a 3x2 array of random float numbers (check <code class="docutils literal notranslate"><span class="pre">np.random</span></code>) between 0 and 1. Now change the arrays datatype to int (<code class="docutils literal notranslate"><span class="pre">array.astype</span></code>). How does the array look like?</p></li>
 <li><p><strong>Reshape</strong> Create a 3x2 array of random integer numbers between 0 and 10. Reshape the array in any way possible. What is not possible?</p></li>
-<li><p><strong>NumpyI/O</strong> Save above array to .npy file (np.save) and read it in again.</p></li>
+<li><p><strong>NumPyI/O</strong> Save above array to .npy file (<code class="docutils literal notranslate"><span class="pre">np.save</span></code>) and read it in again.</p></li>
 </ul>
 </div>
 <div class="admonition-solution solution dropdown admonition">
@@ -305,19 +305,19 @@ important things to do for speed.</p>
 Both <code class="docutils literal notranslate"><span class="pre">np.linspace</span></code> and <code class="docutils literal notranslate"><span class="pre">np.arange</span></code> take dtype as an argument and can be adjusted to match each other in that way.</p>
 <ul class="simple">
 <li><p><strong>Datatypes</strong> eg <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">np.random.random((3,2))</span></code>. <code class="docutils literal notranslate"><span class="pre">a.astype('int')</span></code> results in an all zero array, not as maybe expected the rounded int.</p></li>
-<li><p><strong>Reshape</strong> eg <code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">np.random.randint(0,10,(3,2)</span></code>. <code class="docutils literal notranslate"><span class="pre">b.reshape((6,1))</span></code> and <code class="docutils literal notranslate"><span class="pre">b.reshape((2,3))</span></code> possible. It is not possible to reshape to shapes using more or less elements than <code class="docutils literal notranslate"><span class="pre">b.size</span> <span class="pre">=</span> <span class="pre">6</span></code>.</p></li>
-<li><p><strong>NumpyI/O</strong> <code class="docutils literal notranslate"><span class="pre">np.save('x.npy',</span> <span class="pre">b)</span></code> and <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">np.load('x.npy')</span></code></p></li>
+<li><p><strong>Reshape</strong> eg <code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">np.random.randint(0,10,(3,2))</span></code>. <code class="docutils literal notranslate"><span class="pre">b.reshape((6,1))</span></code> and <code class="docutils literal notranslate"><span class="pre">b.reshape((2,3))</span></code> possible. It is not possible to reshape to shapes using more or less elements than <code class="docutils literal notranslate"><span class="pre">b.size</span> <span class="pre">=</span> <span class="pre">6</span></code>.</p></li>
+<li><p><strong>NumPyI/O</strong> <code class="docutils literal notranslate"><span class="pre">np.save('x.npy',</span> <span class="pre">b)</span></code> and <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">np.load('x.npy')</span></code></p></li>
 </ul>
 </div>
 </div>
 <div class="section" id="array-maths">
 <h2>Array maths<a class="headerlink" href="#array-maths" title="Permalink to this headline">¶</a></h2>
-<p>Clearly, you can do math on arrays.  Math in numpy, is very fast
+<p>Clearly, you can do math on arrays.  Math in NumPy, is very fast
 because it is implemented in C or Fortran - just like most other
 high-level languages such as R, Matlab, etc do.</p>
-<p>By default, in numpy all math is element-by-element.  This is unlike
+<p>By default, in NumPy all math is element-by-element.  This is unlike
 Matlab, where most things are element-by-element, but <code class="docutils literal notranslate"><span class="pre">*</span></code> becomes
-array multiplication.  Numpy values consistency and does not treat
+array multiplication.  NumPy values consistency and does not treat
 2-dimensional arrays specially:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]])</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">]])</span>
@@ -339,21 +339,21 @@ array multiplication.  Numpy values consistency and does not treat
 <p class="admonition-title">Solution</p>
 <ul class="simple">
 <li><p><strong>Matrix multiplication</strong> <code class="docutils literal notranslate"><span class="pre">np.multiply</span></code> does elementwise multiplication on two arrays, while <code class="docutils literal notranslate"><span class="pre">np.dot</span></code> enables matrix multiplication.</p></li>
-<li><p><strong>Axis</strong> axis=1 does the operation (here: <code class="docutils literal notranslate"><span class="pre">np.sum</span></code>) over each row, while axis=0 does it over each column. If axis is left out, the sum of the full array is given.</p></li>
+<li><p><strong>Axis</strong> <code class="docutils literal notranslate"><span class="pre">axis=1</span></code> does the operation (here: <code class="docutils literal notranslate"><span class="pre">np.sum</span></code>) over each row, while axis=0 does it over each column. If axis is left out, the sum of the full array is given.</p></li>
 </ul>
 </div>
 </div>
 <div class="section" id="indexing-and-slicing">
 <h2>Indexing and Slicing<a class="headerlink" href="#indexing-and-slicing" title="Permalink to this headline">¶</a></h2>
-<p>Numpy has many ways to extract values out of arrays:</p>
+<p>NumPy has many ways to extract values out of arrays:</p>
 <ul class="simple">
 <li><p>You can select a single element</p></li>
 <li><p>You can select rows or columns</p></li>
 <li><p>You can select ranges where a condition is true.</p></li>
 </ul>
-<p>Clever and efficient use of these operations is a key to numpy’s
+<p>Clever and efficient use of these operations is a key to NumPy’s
 speed: you should try to cleverly use these selectors (written in C)
-to extract data to be used with other numpy functions written in C or
+to extract data to be used with other NumPy functions written in C or
 Fortran.  This will give you the benefits of Python with most of the
 speed of C.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>      <span class="c1"># 4x4 identity matrix</span>
@@ -379,20 +379,20 @@ speed of C.</p>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p><strong>View vs copy</strong> Try out above code. How does a look like before b has changed and after? How could it be avoided?</p></li>
+<li><p><strong>View vs copy</strong> Try out above code. How does <code class="docutils literal notranslate"><span class="pre">a</span></code> look like before <code class="docutils literal notranslate"><span class="pre">b</span></code> has changed and after? How could it be avoided?</p></li>
 </ul>
 </div>
 <div class="admonition-solution solution dropdown admonition">
 <p class="admonition-title">Solution</p>
 <ul class="simple">
-<li><p><strong>View vs copy</strong> The change in b has also changed the array a! This is because b is merely a view of a part of array a.</p></li>
+<li><p><strong>View vs copy</strong> The change in <code class="docutils literal notranslate"><span class="pre">b</span></code> has also changed the array <code class="docutils literal notranslate"><span class="pre">a</span></code>! This is because <code class="docutils literal notranslate"><span class="pre">b</span></code> is merely a view of a part of array <code class="docutils literal notranslate"><span class="pre">a</span></code>.</p></li>
 </ul>
 <p>Both variables point to the same memory. Hence, if one is changed, the other one also changes. If you need to keep the original array as is, use <code class="docutils literal notranslate"><span class="pre">np.copy(a)</span></code>.</p>
 </div>
 <div class="admonition-challenge challenge admonition">
 <p class="admonition-title">Challenge</p>
 <ul class="simple">
-<li><p><strong>Numpy functionality</strong> Create two 2D arrays and do matrix multiplication first manually (for loop), then using the <code class="docutils literal notranslate"><span class="pre">np.dot</span></code> function. Use <code class="docutils literal notranslate"><span class="pre">%%timeit</span></code> to compare execution times. What is happening?</p></li>
+<li><p><strong>NumPy functionality</strong> Create two 2D arrays and do matrix multiplication first manually (for loop), then using the <code class="docutils literal notranslate"><span class="pre">np.dot</span></code> function. Use <code class="docutils literal notranslate"><span class="pre">%%timeit</span></code> to compare execution times. What is happening?</p></li>
 </ul>
 </div>
 <div class="admonition-solution solution dropdown admonition">
@@ -404,7 +404,7 @@ speed of C.</p>
 </div>
 <div class="section" id="types-of-operations">
 <h2>Types of operations<a class="headerlink" href="#types-of-operations" title="Permalink to this headline">¶</a></h2>
-<p>There are different types of standard operations in numpy:</p>
+<p>There are different types of standard operations in NumPy:</p>
 <p><strong>ufuncs</strong>, “universal functions”: These are element-by-element
 functions with standardized arguments:</p>
 <ul>
@@ -454,7 +454,7 @@ linear algebra, scientific functions, etc.</p>
 <li><p><strong>In-place addition</strong>: Create an array, add it to itself using a
 ufunc.</p></li>
 <li><p><strong>In-place addition</strong> (advanced): Create an array of
-<cite>dtype=’float’</cite>, and an array of <cite>dtype=’int’</cite>.  Try to use the
+<code class="docutils literal notranslate"><span class="pre">dtype='float'</span></code>, and an array of <code class="docutils literal notranslate"><span class="pre">dtype='int'</span></code>.  Try to use the
 int array is the output argument of the first two arrays.</p></li>
 </ul>
 </div>
@@ -491,10 +491,10 @@ specialized:</p>
 <li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/routines.linalg.html">Linear algebra in numpy</a></p></li>
 <li><p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/">Scipy</a> has even
 more functions</p></li>
-<li><p>Many other libraries use numpy arrays as the standard data
+<li><p>Many other libraries use NumPy arrays as the standard data
 structure: they take data in this format, and return it similarly.
 Thus, all the other packages you may want to use are compatible</p></li>
-<li><p>If you need to write your own fast code in C, numpy arrays can be
+<li><p>If you need to write your own fast code in C, NumPy arrays can be
 used to pass data.  This is known as <a class="reference external" href="https://docs.python.org/3/extending/">extending Python</a>.</p></li>
 </ul>
 <div class="admonition-challenge challenge admonition">
@@ -507,8 +507,8 @@ Extract just the first row of each of them and check the <code class="docutils l
 <div class="admonition-keypoints keypoints admonition">
 <p class="admonition-title">Keypoints</p>
 <ul class="simple">
-<li><p>Numpy is a powerful library every scientist using python should know about, since many other libraries also use it internally.</p></li>
-<li><p>Be aware of some numpy specific pecularities</p></li>
+<li><p>NumPy is a powerful library every scientist using python should know about, since many other libraries also use it internally.</p></li>
+<li><p>Be aware of some NumPy specific pecularities</p></li>
 </ul>
 </div>
 </div>
@@ -516,7 +516,7 @@ Extract just the first row of each of them and check the <code class="docutils l
 <h2>Additional Exercises<a class="headerlink" href="#additional-exercises" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
 <li><p>Reverse a vector. Given a vector, reverse it such that the last
-element becomes the first, e.g. [1, 2, 3] =&gt; [3, 2, 1]</p></li>
+element becomes the first, e.g. <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3]</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">[3,</span> <span class="pre">2,</span> <span class="pre">1]</span></code></p></li>
 <li><p>Create a 2D array with zeros on the borders and 1 inside.</p></li>
 <li><p>Create a random array with elements [0, 1), then add 10 to all
 elements in the range [0.2, 0.7).</p></li>
