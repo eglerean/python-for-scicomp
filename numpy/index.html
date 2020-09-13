@@ -224,7 +224,7 @@ dimensions.  An array has:</p>
 <li><p><cite>data</cite> - raw data storage in memory.  This can be passed to C or
 Fortran code for efficient calculations.</p></li>
 </ul>
-<p>To test the performance of pure Python vs numpy we can write in our jupyter notebook</p>
+<p>To test the performance of pure Python vs numpy we can write in our jupyter notebook:</p>
 <p>Create one list and one ‘empty’ list, to store the result in</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10000</span><span class="p">))</span>
 <span class="n">b</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">0</span> <span class="p">]</span> <span class="o">*</span> <span class="mi">10000</span>
@@ -236,7 +236,8 @@ Fortran code for efficient calculations.</p></li>
   <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span>
 </pre></div>
 </div>
-<p>For the numpy example, create one array and one ‘empty’ array to store the result in</p>
+<p>That looks and feels quite fast. But let’s take a look at how numpy performs for the same task.</p>
+<p>So for the numpy example, create one array and one ‘empty’ array to store the result in</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
@@ -247,6 +248,7 @@ Fortran code for efficient calculations.</p></li>
 <span class="n">b</span> <span class="o">=</span> <span class="n">a</span> <span class="o">**</span> <span class="mi">2</span>
 </pre></div>
 </div>
+<p>We see that compared to working with numpy arrays, working with traditional python lists is actually slow.</p>
 </div>
 <div class="section" id="creating-arrays">
 <h2>Creating arrays<a class="headerlink" href="#creating-arrays" title="Permalink to this headline">¶</a></h2>
@@ -272,8 +274,8 @@ Fortran code for efficient calculations.</p></li>
 </pre></div>
 </div>
 <p>Arrays can also be stored and read from a (.npy) file:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;x.npy&#39;</span><span class="p">)</span>           <span class="c1"># save an array to a .npy file</span>
-<span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;x.npy&#39;</span><span class="p">)</span>           <span class="c1"># load an array from a .npy file</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;x.npy&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>           <span class="c1"># save the array a to a .npy file</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;x.npy&#39;</span><span class="p">)</span>          <span class="c1"># load an array from a .npy file and store it in variable x</span>
 </pre></div>
 </div>
 <p>In many occasions (especially when something goes different than expected) it is useful to check and control the datatype of the array:</p>
@@ -304,7 +306,7 @@ Both <code class="docutils literal notranslate"><span class="pre">np.linspace</s
 <ul class="simple">
 <li><p><strong>Datatypes</strong> eg <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">np.random.random((3,2))</span></code>. <code class="docutils literal notranslate"><span class="pre">a.astype('int')</span></code> results in an all zero array, not as maybe expected the rounded int.</p></li>
 <li><p><strong>Reshape</strong> eg <code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">np.random.randint(0,10,(3,2)</span></code>. <code class="docutils literal notranslate"><span class="pre">b.reshape((6,1))</span></code> and <code class="docutils literal notranslate"><span class="pre">b.reshape((2,3))</span></code> possible. It is not possible to reshape to shapes using more or less elements than <code class="docutils literal notranslate"><span class="pre">b.size</span> <span class="pre">=</span> <span class="pre">6</span></code>.</p></li>
-<li><p><strong>NumpyI/O</strong> <code class="docutils literal notranslate"><span class="pre">np.save('x.npy')</span></code> and <code class="docutils literal notranslate"><span class="pre">np.load('x.npy')</span></code></p></li>
+<li><p><strong>NumpyI/O</strong> <code class="docutils literal notranslate"><span class="pre">np.save('x.npy',</span> <span class="pre">b)</span></code> and <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">np.load('x.npy')</span></code></p></li>
 </ul>
 </div>
 </div>
@@ -354,7 +356,7 @@ speed: you should try to cleverly use these selectors (written in C)
 to extract data to be used with other numpy functions written in C or
 Fortran.  This will give you the benefits of Python with most of the
 speed of C.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>      <span class="c1"># 4x4 identity matrix</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>      <span class="c1"># 4x4 identity matrix</span>
 <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>               <span class="c1"># first row</span>
 <span class="n">a</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>             <span class="c1"># first column</span>
 <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>         <span class="c1"># middle 2x2 array</span>
@@ -362,9 +364,8 @@ speed of C.</p>
 <span class="n">a</span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>  <span class="c1"># second element of first and second row as array</span>
 </pre></div>
 </div>
-<p>Boolean indexing:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-<span class="n">idx</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>      <span class="c1"># creates boolean matrix of same size as a</span>
+<p>Boolean indexing on above created array:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">idx</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>      <span class="c1"># creates boolean matrix of same size as a</span>
 <span class="n">a</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>             <span class="c1"># array with matching values of above criterion</span>
 
 <span class="n">a</span><span class="p">[</span><span class="n">a</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>           <span class="c1"># same as above in one line</span>
@@ -374,7 +375,7 @@ speed of C.</p>
 <p class="admonition-title">Challenge</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -384,8 +385,9 @@ speed of C.</p>
 <div class="admonition-solution solution dropdown admonition">
 <p class="admonition-title">Solution</p>
 <ul class="simple">
-<li><p><strong>View vs copy</strong></p></li>
+<li><p><strong>View vs copy</strong> The change in b has also changed the array a! This is because b is merely a view of a part of array a.</p></li>
 </ul>
+<p>Both variables point to the same memory. Hence, if one is changed, the other one also changes. If you need to keep the original array as is, use <code class="docutils literal notranslate"><span class="pre">np.copy(a)</span></code>.</p>
 </div>
 <div class="admonition-challenge challenge admonition">
 <p class="admonition-title">Challenge</p>
@@ -431,9 +433,8 @@ that they are compatible in shape.</p>
 </ul>
 <p><strong>Array methods</strong> do something about the array itself.</p>
 <blockquote>
-<div><ul class="simple">
-<li><p>Some of these are the same as ufuncs.</p></li>
-</ul>
+<div><ul>
+<li><p>Some of these are the same as ufuncs:</p>
 <p>x = np.arange(12)
 x.shape = (3, 4)
 x                    #  array([[ 0,  1,  2,  3],</p>
@@ -444,6 +445,8 @@ x                    #  array([[ 0,  1,  2,  3],</p>
 <p>x.max()              #  11
 x.max(axis=0)        #  array([ 8,  9, 10, 11])
 x.max(axis=1)        #  array([ 3,  7, 11])</p>
+</li>
+</ul>
 </div></blockquote>
 <p><strong>Other functions</strong>: there are countless other functions covering
 linear algebra, scientific functions, etc.</p>
@@ -503,10 +506,12 @@ used to pass data.  This is known as <a class="reference external" href="https:/
 Extract just the first row of each of them and check the <code class="docutils literal notranslate"><span class="pre">.shape</span></code>.</p></li>
 </ul>
 </div>
-<p>..keypoints:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">Numpy</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">powerful</span> <span class="n">library</span> <span class="n">every</span> <span class="n">scientist</span> <span class="n">using</span> <span class="n">python</span> <span class="n">should</span> <span class="n">know</span> <span class="n">about</span><span class="p">,</span> <span class="n">since</span> <span class="n">many</span> <span class="n">other</span> <span class="n">libraries</span> <span class="n">also</span> <span class="n">use</span> <span class="n">it</span> <span class="n">internally</span><span class="o">.</span>
-<span class="o">-</span> <span class="n">Be</span> <span class="n">aware</span> <span class="n">of</span> <span class="n">some</span> <span class="n">numpy</span> <span class="n">specific</span> <span class="n">pecularities</span>
-</pre></div>
+<div class="admonition-keypoints keypoints admonition">
+<p class="admonition-title">Keypoints</p>
+<ul class="simple">
+<li><p>Numpy is a powerful library every scientist using python should know about, since many other libraries also use it internally.</p></li>
+<li><p>Be aware of some numpy specific pecularities</p></li>
+</ul>
 </div>
 </div>
 <div class="section" id="additional-exercises">
