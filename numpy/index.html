@@ -431,23 +431,21 @@ The basic idea is that it expands dimensions of the smaller array so
 that they are compatible in shape.</p>
 </li>
 </ul>
-<p><strong>Array methods</strong> do something about the array itself.</p>
-<blockquote>
-<div><ul>
+<p><strong>Array methods</strong> do something to one array:</p>
+<ul>
 <li><p>Some of these are the same as ufuncs:</p>
-<p>x = np.arange(12)
-x.shape = (3, 4)
-x                    #  array([[ 0,  1,  2,  3],</p>
-<blockquote>
-<div><p>#         [ 4,  5,  6,  7],
-#         [ 8,  9, 10, 11]])</p>
-</div></blockquote>
-<p>x.max()              #  11
-x.max(axis=0)        #  array([ 8,  9, 10, 11])
-x.max(axis=1)        #  array([ 3,  7, 11])</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">x</span><span class="o">.</span><span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">x</span>                    <span class="c1">#  array([[ 0,  1,  2,  3],</span>
+                     <span class="c1">#         [ 4,  5,  6,  7],</span>
+                     <span class="c1">#         [ 8,  9, 10, 11]])</span>
+<span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>              <span class="c1">#  11</span>
+<span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>        <span class="c1">#  array([ 8,  9, 10, 11])</span>
+<span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>        <span class="c1">#  array([ 3,  7, 11])</span>
+</pre></div>
+</div>
 </li>
 </ul>
-</div></blockquote>
 <p><strong>Other functions</strong>: there are countless other functions covering
 linear algebra, scientific functions, etc.</p>
 <div class="admonition-challenge challenge admonition">
