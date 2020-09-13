@@ -219,7 +219,6 @@
 <dl class="simple">
 <dt>TODO:</dt><dd><ul class="simple">
 <li><p>Why is the array data structure good?</p></li>
-<li><p>Why learn numpy?  You rarely use it directly, but almost any other package uses it.</p></li>
 <li><p>Slice arrays, basic and fancy</p></li>
 <li><p>Types of operations: scalar, ufunc, methods, functions</p></li>
 </ul>
@@ -251,7 +250,7 @@ non negative indices and provides the framework for multiple dimensions.</p>
 <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>                  <span class="c1"># 2x2 identity matrix</span>
 
 <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>              <span class="c1"># Evenly spaced values in an interval</span>
-<span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>        <span class="c1"># same as above</span>
+<span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>        <span class="c1"># same as above, see exercise</span>
 
 <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;x.npy&#39;</span><span class="p">)</span>           <span class="c1"># load an array from a .npy file</span>
 
@@ -265,9 +264,10 @@ non negative indices and provides the framework for multiple dimensions.</p>
 <div class="section" id="exercise-1">
 <h2>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>arange vs linspace, can you make them do same thing?</p></li>
-<li><p>playing around with reshape</p></li>
-<li><p>numpy I/O</p></li>
+<li><p>Try out <code class="docutils literal notranslate"><span class="pre">np.arange(10)</span></code> and <code class="docutils literal notranslate"><span class="pre">np.linspace(0,9,10)</span></code>, what is the difference? Can you adjust one to do the same as the other?</p></li>
+<li><p>Create a 3x2 array of random float numbers (check np.random) between 0 and 1. Now change the arrays datatype to int (array.astype). How does the array look like?</p></li>
+<li><p>Create a 3x2 array of random float numbers (check np.random) between 0 and 1. Reshape the array in any way possible. What is not possible?</p></li>
+<li><p>Save above array to .npy file (np.save) and read it in again.</p></li>
 </ul>
 </div>
 <div class="section" id="array-maths">
@@ -283,8 +283,10 @@ non negative indices and provides the framework for multiple dimensions.</p>
 </div>
 <div class="section" id="exercise-2">
 <h2>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h2>
-<p><a href="#id1"><span class="problematic" id="id2">*</span></a>np.multiply vs np.dot
-<a href="#id3"><span class="problematic" id="id4">*</span></a>np.sum(axis=1) vs np.sum(axis=0)</p>
+<ul class="simple">
+<li><p>What is the difference between <code class="docutils literal notranslate"><span class="pre">np.multiply</span></code> and <code class="docutils literal notranslate"><span class="pre">np.dot</span></code> ?</p></li>
+<li><p>What is the difference between <code class="docutils literal notranslate"><span class="pre">np.sum(axis=1)</span></code> vs <code class="docutils literal notranslate"><span class="pre">np.sum(axis=0)</span></code>?</p></li>
+</ul>
 </div>
 <div class="section" id="indexing-and-slicing">
 <h2>Indexing and Slicing<a class="headerlink" href="#indexing-and-slicing" title="Permalink to this headline">¶</a></h2>
@@ -310,7 +312,7 @@ non negative indices and provides the framework for multiple dimensions.</p>
 b = a[:,0]
 b[0,0] = 5</p>
 <ul class="simple">
-<li><p>how does a look, how to avoid? -&gt; view vs copy</p></li>
+<li><p>Try out above code. How does a look like before b has changed and after? How could it be avoided?</p></li>
 </ul>
 </div>
 <div class="section" id="exercise-4">
@@ -338,12 +340,9 @@ equality with <code class="docutils literal notranslate"><span class="pre">np.eq
 <li><p>Create a 1D array with 10 random elements. Sort it.</p></li>
 <li><p>What’s the difference between <code class="docutils literal notranslate"><span class="pre">np_array.sort()</span></code> and
 <code class="docutils literal notranslate"><span class="pre">np.sort(np_array)</span></code>?</p></li>
-<li><dl class="simple">
-<dt>For the random array in question 8, instead of sorting it, perform</dt><dd><p>an indirect sort. That is, return the list of indices which would
-index the array in sorted order.</p>
-</dd>
-</dl>
-</li>
+<li><p>For the random array in question 8, instead of sorting it, perform
+an indirect sort. That is, return the list of indices which would
+index the array in sorted order.</p></li>
 <li><p>Create a 4x4 array of zeros, and another 4x4 array of ones. Next
 combine them into a single 8x4 array with the content of the zeros
 array on top and the ones on the bottom.  Finally, do the same,
