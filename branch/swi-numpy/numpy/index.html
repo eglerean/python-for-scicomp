@@ -215,9 +215,8 @@
 <dl class="simple">
 <dt>TODO:</dt><dd><ul class="simple">
 <li><p>Why is the array data structure good?</p></li>
-<li><p>Slice arrays, basic and fancy</p></li>
-<li><p>Types of operations: scalar, ufunc, methods, functions</p></li>
-<li><p>broadcasting?</p></li>
+<li><p>Slice arrays, basic and fancy -&gt; more examples?</p></li>
+<li><p>Types of operations: scalar, ufunc, methods, functions + broadcasting?</p></li>
 </ul>
 </dd>
 </dl>
@@ -240,7 +239,7 @@ non negative indices and provides the framework for multiple dimensions.</p>
 <span class="n">b</span><span class="o">.</span><span class="n">size</span>                              <span class="c1"># number of elements</span>
 </pre></div>
 </div>
-<p>Other ways of creating arrays</p>
+<p>In addition to above ways of creating arrays, there are many other ways of creating arrays depending on content:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>           <span class="c1"># 2x3 array with all elements 0</span>
 <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>             <span class="c1"># 1x2 array with all elements 1</span>
 <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="mi">7</span><span class="p">)</span>           <span class="c1"># 2x2 array with all elements 7</span>
@@ -249,12 +248,18 @@ non negative indices and provides the framework for multiple dimensions.</p>
 <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>              <span class="c1"># Evenly spaced values in an interval</span>
 <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>        <span class="c1"># same as above, see exercise</span>
 
-<span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;x.npy&#39;</span><span class="p">)</span>           <span class="c1"># load an array from a .npy file</span>
-
 <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
 <span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nb">bool</span><span class="p">)</span>  <span class="c1"># 3x2 boolean array</span>
-
-<span class="n">d</span><span class="o">.</span><span class="n">dtype</span>                    <span class="c1"># datatype of the array</span>
+</pre></div>
+</div>
+<p>Arrays can also be stored and read from a (.npy) file :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;x.npy&#39;</span><span class="p">)</span>           <span class="c1"># save an array to a .npy file</span>
+<span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;x.npy&#39;</span><span class="p">)</span>           <span class="c1"># load an array from a .npy file</span>
+</pre></div>
+</div>
+<p>In many occasions (especially when something goes different than expected) it is useful to check and control the datatype of the array:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d</span><span class="o">.</span><span class="n">dtype</span>                    <span class="c1"># datatype of the array</span>
+<span class="n">d</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>            <span class="c1"># change datatype from boolean to integer</span>
 </pre></div>
 </div>
 <div class="admonition-challenge challenge admonition">
@@ -264,6 +269,19 @@ non negative indices and provides the framework for multiple dimensions.</p>
 <li><p><strong>Datatypes</strong> Create a 3x2 array of random float numbers (check np.random) between 0 and 1. Now change the arrays datatype to int (array.astype). How does the array look like?</p></li>
 <li><p><strong>Reshape</strong> Create a 3x2 array of random integer numbers between 0 and 10. Reshape the array in any way possible. What is not possible?</p></li>
 <li><p><strong>NumpyI/O</strong> Save above array to .npy file (np.save) and read it in again.</p></li>
+</ul>
+</div>
+<div class="admonition-solution solution admonition">
+<p class="admonition-title">Solution</p>
+<ul class="simple">
+<li><p><strong>Datatypes</strong> <code class="docutils literal notranslate"><span class="pre">np.arange(10)</span></code> results in <code class="docutils literal notranslate"><span class="pre">array([0,</span> <span class="pre">1,</span> <span class="pre">2,</span> <span class="pre">3,</span> <span class="pre">4,</span> <span class="pre">5,</span> <span class="pre">6,</span> <span class="pre">7,</span> <span class="pre">8,</span> <span class="pre">9])</span></code> with dtype int64,</p></li>
+</ul>
+<p>while <code class="docutils literal notranslate"><span class="pre">np.linspace(0,9,10)</span></code> results in array([0., 1., 2., 3., 4., 5., 6., 7., 8., 9.]) with dtype float64.
+Both <code class="docutils literal notranslate"><span class="pre">np.linspace</span></code> and <code class="docutils literal notranslate"><span class="pre">np.arange</span></code> take dtype as an argument and can be adjusted to match each other in that way.</p>
+<ul class="simple">
+<li><p><strong>Datatypes</strong> eg <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">np.random.random((3,2))</span></code>. <code class="docutils literal notranslate"><span class="pre">a.astype('int')</span></code> results in an all zero array, not as maybe expected the rounded int.</p></li>
+<li><p><strong>Reshape</strong> eg <code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">np.random.randint(0,10,(3,2)</span></code>. <code class="docutils literal notranslate"><span class="pre">b.reshape((6,1))</span></code> and <code class="docutils literal notranslate"><span class="pre">b.reshape((2,3))</span></code> possible. It is not possible to reshape to shapes using more or less elements than <code class="docutils literal notranslate"><span class="pre">b.size</span> <span class="pre">=</span> <span class="pre">6</span></code>.</p></li>
+<li><p><strong>NumpyI/O</strong> <code class="docutils literal notranslate"><span class="pre">np.save('x.npy')</span></code> and <code class="docutils literal notranslate"><span class="pre">np.load('x.npy')</span></code></p></li>
 </ul>
 </div>
 </div>
@@ -284,6 +302,13 @@ non negative indices and provides the framework for multiple dimensions.</p>
 <li><p><strong>Axis</strong> What is the difference between <code class="docutils literal notranslate"><span class="pre">np.sum(axis=1)</span></code> vs <code class="docutils literal notranslate"><span class="pre">np.sum(axis=0)</span></code>?</p></li>
 </ul>
 </div>
+<div class="admonition-solution solution admonition">
+<p class="admonition-title">Solution</p>
+<ul class="simple">
+<li><p><strong>Matrix multiplication</strong></p></li>
+<li><p><strong>Axis</strong></p></li>
+</ul>
+</div>
 </div>
 <div class="section" id="indexing-and-slicing">
 <h2>Indexing and Slicing<a class="headerlink" href="#indexing-and-slicing" title="Permalink to this headline">¶</a></h2>
@@ -292,7 +317,7 @@ non negative indices and provides the framework for multiple dimensions.</p>
 <span class="n">a</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>             <span class="c1"># first column</span>
 <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>         <span class="c1"># middle 2x2 array</span>
 
-<span class="n">a</span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>  <span class="c1">#slicing with lists</span>
+<span class="n">a</span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>  <span class="c1"># second element of first and second row as array</span>
 </pre></div>
 </div>
 <p>Boolean indexing</p>
@@ -303,17 +328,33 @@ non negative indices and provides the framework for multiple dimensions.</p>
 <span class="n">a</span><span class="p">[</span><span class="n">a</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>           <span class="c1"># same as above in one line</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>a = np.eye(4)
-b = a[:,0]
-b[0,0] = 5
-
- - **View vs copy** Try out above code. How does a look like before b has changed and after? How could it be avoided?
+<div class="admonition-challenge challenge admonition">
+<p class="admonition-title">Challenge</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
 </pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>View vs copy</strong> Try out above code. How does a look like before b has changed and after? How could it be avoided?</p></li>
+</ul>
+</div>
+<div class="admonition-solution solution admonition">
+<p class="admonition-title">Solution</p>
+<ul class="simple">
+<li><p><strong>View vs copy</strong></p></li>
+</ul>
 </div>
 <div class="admonition-challenge challenge admonition">
 <p class="admonition-title">Challenge</p>
 <ul class="simple">
 <li><p><strong>Numpy functionality</strong> Create two 2D arrays and do matrix multiplication first manually (for loop), then using the <code class="docutils literal notranslate"><span class="pre">np.dot</span></code> function. Use <code class="docutils literal notranslate"><span class="pre">%%timeit</span></code> to compare execution times. What is happening?</p></li>
+</ul>
+</div>
+<div class="admonition-solution solution admonition">
+<p class="admonition-title">Solution</p>
+<ul class="simple">
+<li><p><strong>Numpy functionality</strong></p></li>
 </ul>
 </div>
 <p>..keypoints:</p>
