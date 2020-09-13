@@ -540,6 +540,53 @@ array on top and the ones on the bottom.  Finally, do the same,
 but create a 4x8 array with the zeros on the left and the ones on
 the rigth.</p></li>
 </ol>
+<div class="admonition-solution solution dropdown admonition">
+<p class="admonition-title">Solution</p>
+<ol class="arabic">
+<li><p>One solution is:</p>
+<p>a = np.array([1, 2, 3])
+a[::-1]</p>
+</li>
+<li><p>One solution is:</p>
+<p>b = np.ones((10,10))
+b[:,[0, -1]]=0
+b[[0, -1],:]=0</p>
+</li>
+<li><p>A possible solution is:</p>
+<p>x = np.random.rand(100)
+y = x + 10*(x &gt;= 0.2)*(x &lt; 0.7)</p>
+</li>
+<li><p>For values exactly halfway between rounded decimal values, NumPy rounds to the nearest even value.</p></li>
+<li><p>Let’s test those functions with few negative and positive values:</p>
+<p>a = np.array([-3.3, -2.5, -1.5, -0.75, -0.5, 0.5, 0.75, 1.5, 2.5, 3])
+np.round(a)
+np.ceil(a)
+np.floor(a)
+np.trun(a)</p>
+</li>
+<li><p>One solution is:</p>
+<p>x = 10*np.random.rand(4,4)
+oo = np.ones((4,4))
+s2c2 = np.square(np.sin(x))+np.square(np.cos(x))
+np.equal(oo,s2c2)
+np.allclose(oo,s2c2)</p>
+</li>
+<li><p>Sorting the array itself, without copying it:</p>
+<p>x = np.random.rand(10)
+x.sort()</p>
+</li>
+<li><p>NumPy.sort() returns a sorted copy of an array.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.argsort(x)</span></code></p></li>
+<li><p>One solution is:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">o</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">z</span><span class="p">,</span><span class="n">o</span><span class="p">))</span>
+<span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">z</span><span class="p">,</span><span class="n">o</span><span class="p">),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
 </div>
 </div>
 
