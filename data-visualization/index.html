@@ -226,8 +226,15 @@ figures one day before submission deadline or regenerate a set of figures
 after the person who created them left the group.</p></li>
 <li><p><strong>Use free tools</strong>: Python or R.</p></li>
 <li><p>There is not the one perfect language and <strong>not the one perfect library</strong> for everything.</p></li>
-<li><p>Within Python, many libraries exist: Matplotlib, Seaborn, Altair, Plotly,
-Bokeh, ggplot, PyNGL, and others.</p></li>
+<li><p>Within Python, many libraries exist:
+<a class="reference external" href="https://matplotlib.org/">Matplotlib</a>,
+<a class="reference external" href="https://seaborn.pydata.org/">Seaborn</a>,
+<a class="reference external" href="https://altair-viz.github.io/">Altair</a>,
+<a class="reference external" href="https://plotly.com/python/">Plotly</a>,
+<a class="reference external" href="https://bokeh.org/">Bokeh</a>,
+<a class="reference external" href="https://yhat.github.io/ggpy/">ggplot</a>,
+<a class="reference external" href="https://www.pyngl.ucar.edu/">PyNGL</a>,
+and many others.</p></li>
 <li><p>Two main families of libraries: procedural (e.g. Matplotlib) and declarative
 (using grammar of graphics).</p></li>
 </ul>
@@ -420,20 +427,46 @@ exercise will be to change this to log scale.</p>
 </div>
 <div class="section" id="how-to-choose-between-the-many-libraries">
 <h2>How to choose between the many libraries<a class="headerlink" href="#how-to-choose-between-the-many-libraries" title="Permalink to this headline">¶</a></h2>
-<div class="admonition-instructor-note instructor-note admonition">
-<p class="admonition-title">Instructor note</p>
-<p>Will write more here on how to choose …
-the pros and cons.</p>
-</div>
+<p><a class="reference external" href="https://matplotlib.org/">Matplotlib</a> is probably the most standard and most
+widely used library.  However it is a relatively low-level interface for
+drawing (in terms of abstractions, not in terms of quality) and does not
+provide statistical functions.</p>
+<p>Many libraries exist with their own strengths, it is also a matter of taste:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://seaborn.pydata.org/">Seaborn</a>: high-level interface to
+Matplotlib, statistical functions built in.</p></li>
+<li><p><a class="reference external" href="https://altair-viz.github.io/">Altair</a>: declarative visualization (R users
+will be more at home), statistics built in.</p></li>
+<li><p><a class="reference external" href="https://plotly.com/python/">Plotly</a>: interactive graphs.</p></li>
+<li><p><a class="reference external" href="https://bokeh.org/">Bokeh</a>: also here good for interactivity.</p></li>
+<li><p><a class="reference external" href="https://yhat.github.io/ggpy/">ggplot</a>: R users will be more at home.</p></li>
+<li><p><a class="reference external" href="https://www.pyngl.ucar.edu/">PyNGL</a>: used in the weather forecast community.</p></li>
+</ul>
 </div>
 <div class="section" id="exercise-4-5">
 <h2>Exercise 4.5<a class="headerlink" href="#exercise-4-5" title="Permalink to this headline">¶</a></h2>
-<div class="admonition-instructor-note instructor-note admonition">
-<p class="admonition-title">Instructor note</p>
-<p>I will point to seaborn, altair, … galleries and the goal of the exercise
-is to select an example that the learner is most interested (closest to their
-research) and try to get the same result as the gallery.</p>
-</div>
+<p>What many people do (including the instructor) is to browse existing example
+galleries for inspiration and to start with an example that is already close to
+what we have in mind and then to replace the example with own data and to
+customize the looks.</p>
+<p>Let’s practice this!</p>
+<ul class="simple">
+<li><p>Browse the various example galleries (links below)</p></li>
+<li><p>Take an example that is close to your recent visualization project or simply interests you</p></li>
+<li><p>Try to reproduce this example in the Jupyter notebook</p></li>
+</ul>
+<p>Example galleries and demos:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://seaborn.pydata.org/examples/index.html">Seaborn</a></p></li>
+<li><p><a class="reference external" href="https://altair-viz.github.io/gallery/index.html">Altair</a>
+(not part of a default Anaconda installation)</p></li>
+<li><p><a class="reference external" href="https://plotly.com/python/">Plotly</a></p></li>
+<li><p><a class="reference external" href="https://demo.bokeh.org/">Bokeh</a></p></li>
+<li><p><a class="reference external" href="https://yhat.github.io/ggpy/">ggplot</a>
+(not part of a default Anaconda installation)</p></li>
+<li><p><a class="reference external" href="https://www.pyngl.ucar.edu/Examples/gallery.shtml">PyNGL</a>
+(not part of a default Anaconda installation)</p></li>
+</ul>
 <div class="admonition-keypoints keypoints admonition">
 <p class="admonition-title">Keypoints</p>
 <ul class="simple">
