@@ -240,6 +240,8 @@ Bokeh, ggplot, PyNGL, and others.</p></li>
 <li><p>MATLAB users will feel familiar.</p></li>
 <li><p>Even if you choose to use another library (see above list), chances are high
 that you need to adapt a Matplotlib plot of somebody else.</p></li>
+<li><p>Libraries that built on top of Matplotlib may need knowledge of Matplotlib
+for custom adjustments.</p></li>
 </ul>
 </div>
 <div class="section" id="getting-started-with-matplotlib">
@@ -262,8 +264,6 @@ to show the generated figure in the notebook, we don’t need this when running 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;we should label the x axis&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;we should label the y axis&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;some title&quot;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>This is the result:</p>
@@ -271,10 +271,13 @@ to show the generated figure in the notebook, we don’t need this when running 
 <p>When plotting using a script, you often want to also save the generated figure:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ... rest of the script</span>
 
+<span class="hll"><span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;my-plot.png&quot;</span><span class="p">)</span>
+</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<span class="hll"><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;my-plot.png&quot;</span><span class="p">)</span>
-</span></pre></div>
+</pre></div>
 </div>
+<p>We also added <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> to show the figure on screen. We did not need this
+in a Jupyter notebook.</p>
 <p>When running a Matplotlib script on a remote server without a “display” (e.g.
 compute cluster), you may need to add this line:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -327,9 +330,7 @@ can be configured and passed around):</p></li>
 </span><span class="hll"><span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;we should label the x axis&quot;</span><span class="p">)</span>
 </span><span class="hll"><span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;we should label the y axis&quot;</span><span class="p">)</span>
 </span><span class="hll"><span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;some title&quot;</span><span class="p">)</span>
-</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
+</span></pre></div>
 </div>
 <ul class="simple">
 <li><p>The more traditional option mimics MATLAB plotting and uses the <strong>pyplot interface</strong> (<code class="docutils literal notranslate"><span class="pre">plt</span></code> carries
@@ -347,9 +348,7 @@ the global settings):</p></li>
 </span><span class="hll"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;we should label the x axis&quot;</span><span class="p">)</span>
 </span><span class="hll"><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;we should label the y axis&quot;</span><span class="p">)</span>
 </span><span class="hll"><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;some title&quot;</span><span class="p">)</span>
-</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
+</span></pre></div>
 </div>
 <p>When searching for help on the internet, you will find both approaches, they
 can also be mixed. Although the pyplot interface looks more compact, <strong>we
@@ -376,6 +375,17 @@ recommend to learn and use the object oriented interface.</strong></p>
 <li><p>Change the number of bins.</p></li>
 <li><p>Convert it from pyplot interface to using the object oriented interface.</p></li>
 </ul>
+<div class="admonition-discussion discussion admonition">
+<p class="admonition-title">Discussion</p>
+<p>Why did we do this? One day you may want to write functions which wrap
+around Matplotlib function calls and then you can send <code class="docutils literal notranslate"><span class="pre">fig</span></code> and <code class="docutils literal notranslate"><span class="pre">ax</span></code>
+into these functions and there is less risk that adjusting figures changes
+settings also for unrelated figures created in other functions.</p>
+<p>When using the pyplot interface, settings are modified for the entire
+<code class="docutils literal notranslate"><span class="pre">plt</span></code> package. The latter is acceptable for linear scripts but may yield
+surprising results when introducing functions to enhance/abstract Matplotlib
+calls.</p>
+</div>
 </div>
 <div class="section" id="styling-and-customizing-plots">
 <h2>Styling and customizing plots<a class="headerlink" href="#styling-and-customizing-plots" title="Permalink to this headline">¶</a></h2>
