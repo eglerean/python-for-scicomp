@@ -257,12 +257,15 @@ non negative indices and provides the framework for multiple dimensions.</p>
 <span class="n">d</span><span class="o">.</span><span class="n">dtype</span>                    <span class="c1"># datatype of the array</span>
 </pre></div>
 </div>
+<div class="admonition-challenge challenge admonition">
+<p class="admonition-title">Challenge</p>
 <ul class="simple">
 <li><p><strong>Datatypes</strong> Try out <code class="docutils literal notranslate"><span class="pre">np.arange(10)</span></code> and <code class="docutils literal notranslate"><span class="pre">np.linspace(0,9,10)</span></code>, what is the difference? Can you adjust one to do the same as the other?</p></li>
 <li><p><strong>Datatypes</strong> Create a 3x2 array of random float numbers (check np.random) between 0 and 1. Now change the arrays datatype to int (array.astype). How does the array look like?</p></li>
 <li><p><strong>Reshape</strong> Create a 3x2 array of random integer numbers between 0 and 10. Reshape the array in any way possible. What is not possible?</p></li>
 <li><p><strong>NumpyI/O</strong> Save above array to .npy file (np.save) and read it in again.</p></li>
 </ul>
+</div>
 </div>
 <div class="section" id="array-maths">
 <h2>Array maths<a class="headerlink" href="#array-maths" title="Permalink to this headline">¶</a></h2>
@@ -274,10 +277,13 @@ non negative indices and provides the framework for multiple dimensions.</p>
 </pre></div>
 </div>
 <p>Also: - (<code class="docutils literal notranslate"><span class="pre">np.subtract()</span></code>), * (<code class="docutils literal notranslate"><span class="pre">np.multiply()</span></code>), / (<code class="docutils literal notranslate"><span class="pre">np.divide()</span></code>), <code class="docutils literal notranslate"><span class="pre">np.sqrt()</span></code>, <code class="docutils literal notranslate"><span class="pre">np.sum()</span></code>, <code class="docutils literal notranslate"><span class="pre">np.mean()</span></code>, …</p>
+<div class="admonition-challenge challenge admonition">
+<p class="admonition-title">Challenge</p>
 <ul class="simple">
 <li><p><strong>Matrix multiplication</strong> What is the difference between <code class="docutils literal notranslate"><span class="pre">np.multiply</span></code> and <code class="docutils literal notranslate"><span class="pre">np.dot</span></code> ?</p></li>
 <li><p><strong>Axis</strong> What is the difference between <code class="docutils literal notranslate"><span class="pre">np.sum(axis=1)</span></code> vs <code class="docutils literal notranslate"><span class="pre">np.sum(axis=0)</span></code>?</p></li>
 </ul>
+</div>
 </div>
 <div class="section" id="indexing-and-slicing">
 <h2>Indexing and Slicing<a class="headerlink" href="#indexing-and-slicing" title="Permalink to this headline">¶</a></h2>
@@ -297,17 +303,19 @@ non negative indices and provides the framework for multiple dimensions.</p>
 <span class="n">a</span><span class="p">[</span><span class="n">a</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>           <span class="c1"># same as above in one line</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>a = np.eye(4)
+b = a[:,0]
+b[0,0] = 5
+
+ - **View vs copy** Try out above code. How does a look like before b has changed and after? How could it be avoided?
 </pre></div>
 </div>
-<ul class="simple">
-<li><p><strong>View vs copy</strong> Try out above code. How does a look like before b has changed and after? How could it be avoided?</p></li>
-</ul>
+<div class="admonition-challenge challenge admonition">
+<p class="admonition-title">Challenge</p>
 <ul class="simple">
 <li><p><strong>Numpy functionality</strong> Create two 2D arrays and do matrix multiplication first manually (for loop), then using the <code class="docutils literal notranslate"><span class="pre">np.dot</span></code> function. Use <code class="docutils literal notranslate"><span class="pre">%%timeit</span></code> to compare execution times. What is happening?</p></li>
 </ul>
+</div>
 <p>..keypoints:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">Numpy</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">powerful</span> <span class="n">library</span> <span class="n">every</span> <span class="n">scientist</span> <span class="n">using</span> <span class="n">python</span> <span class="n">should</span> <span class="n">know</span> <span class="n">about</span><span class="p">,</span> <span class="n">since</span> <span class="n">many</span> <span class="n">other</span> <span class="n">libraries</span> <span class="n">also</span> <span class="n">use</span> <span class="n">it</span> <span class="n">internally</span><span class="o">.</span>
 <span class="o">-</span> <span class="n">Be</span> <span class="n">aware</span> <span class="n">of</span> <span class="n">some</span> <span class="n">numpy</span> <span class="n">specific</span> <span class="n">pecularities</span>
