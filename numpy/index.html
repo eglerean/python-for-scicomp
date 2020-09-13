@@ -98,20 +98,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../jupyter/">Jupyter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../jupyter/#why-jupyter">Why Jupyter?</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Enter NumPy</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#exercise-2-1">Exercise 2.1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#other-ways-of-creating-numpy-arrays">Other ways of creating NumPy arrays</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#numpy-array-slicing-syntax">NumPy array slicing syntax</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#views-vs-copies">Views vs. copies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#array-shape-and-size">Array shape and size</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#combining-splitting-and-rolling-arrays">Combining, splitting and rolling arrays</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#exercise-2-2">Exercise 2.2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#numpy-i-o">NumPy I/O</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#random-numbers-in-numpy">Random Numbers in NumPy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#linear-algebra-in-numpy">Linear algebra in Numpy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#exercise-2-3">Exercise 2.3</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#exercise-2-4">Exercise 2.4</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#exercise-2-5">Exercise 2.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#array-definition">Array definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercise-1">Exercise 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#array-maths">Array maths</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercise-2">Exercise 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#indexing-and-slicing">Indexing and Slicing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercise-3">Exercise 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercise-4">Exercise 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#additional-exercises">Additional Exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../data-visualization/">Data visualization with Matplotlib</a></li>
@@ -212,193 +206,129 @@
 <div class="admonition-questions questions admonition">
 <p class="admonition-title">Questions</p>
 <ul class="simple">
-<li><p>Q1</p></li>
-<li><p>Q2</p></li>
+<li><p>Why using numpy instead of pure python?</p></li>
+<li><p>How to use basic numpy?</p></li>
 </ul>
 </div>
 <div class="admonition-objectives objectives admonition">
 <p class="admonition-title">Objectives</p>
 <ul class="simple">
-<li><p>O1</p></li>
-<li><p>O2</p></li>
+<li><p>Be able to use basic numpy functionality</p></li>
+<li><p>Understand enough of numpy to seach for answers to the rest of your questions ;)</p></li>
 </ul>
 </div>
-<div class="section" id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p>The NumPy package provides a N-dimensional array type, and syntax and
-utility functions for working with these arrays.</p>
-<p>In contrast to a python list, a numpy array can only hold elements of
-the same type. The element type can be seen via the ‘dtype’ attribute.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">)))</span>
-<span class="n">a</span><span class="o">.</span><span class="n">dtype</span>
-<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;hello&quot;</span>  <span class="c1"># error!</span>
-<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span><span class="o">**</span><span class="mi">100</span>    <span class="c1"># error!</span>
+<dl class="simple">
+<dt>TODO:</dt><dd><ul class="simple">
+<li><p>Why is the array data structure good?</p></li>
+<li><p>Slice arrays, basic and fancy</p></li>
+<li><p>Types of operations: scalar, ufunc, methods, functions</p></li>
+</ul>
+</dd>
+</dl>
+<p>So, we already know about python lists, and that we can put all kinds of things in there.
+But in scientific usage, lists are often not enough. They are slow and not very flexible.</p>
+<p>Numpy is the most used library for scientific computing.
+(You will probably rarely use it directly, but many libraries use it in the background)
+Numpy provides the high-performance multidimensional array object and tools to use it.</p>
+<p>An array is a ‘grid’ of values, with all the same types. It is indexed by tuples of
+non negative indices and provides the framework for multiple dimensions.</p>
+<ul class="simple">
+<li><p>List vs array performance demonstration</p></li>
+</ul>
+<div class="section" id="array-definition">
+<h2>Array definition<a class="headerlink" href="#array-definition" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>               <span class="c1"># 1-dimensional array (rank 1)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]])</span>     <span class="c1"># 2-dimensional array (rank 2)</span>
+
+<span class="n">b</span><span class="o">.</span><span class="n">shape</span>      <span class="c1"># the shape (rows,columns)</span>
+<span class="n">b</span><span class="o">.</span><span class="n">size</span>       <span class="c1"># number of elements</span>
 </pre></div>
 </div>
-<p>What these restrictions buy you is that the memory layout of a numpy
-array is very efficient, similar to what you see in low level
-languages like C or Fortran.  This means operating on these arrays is
-very efficient; in fact, much of the speed advantage of numpy comes
-from the fact that array syntax is implemented in fast C code.</p>
-<p>Due to the memory layout of numpy being compatible with C and Fortran,
-numpy arrays allows one to use functionality written in these other
-languages.  Much of the SciPy ecosystem (NumPy, SciPy, etc.) consist
-of python wrappers around widely used and battle-tested numerical
-libraries written in C or Fortran such as LAPACK and BLAS.</p>
-<p>The Python list</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">]</span>
-</pre></div>
-</div>
-<p>has roughly the following layout in memory:</p>
-<img alt="../_images/a_list.svg" src="../_images/a_list.svg" /><p>In contrast, the NumPy array</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
-</pre></div>
-</div>
-<p>has the memory layout like</p>
-<img alt="../_images/ndarray.svg" src="../_images/ndarray.svg" /></div>
-<div class="section" id="exercise-2-1">
-<h2>Exercise 2.1<a class="headerlink" href="#exercise-2-1" title="Permalink to this headline">¶</a></h2>
-<ol class="arabic simple">
-<li><p>In the example above we saw that <code class="docutils literal notranslate"><span class="pre">2**100</span></code> was too large. What is
-the default datatype of a numpy integer array if we don’t
-explicitly specify some type, and what is the largest possible
-integer we can store in such an element.</p></li>
-<li><p>What is the smallest negative element (that is, the largest
-absolute value of a negative number)?  Is it different from the
-largest positive number, and if so, why?</p></li>
-<li><p>What is the absolute value of the smallest negative element? Why?</p></li>
-</ol>
-</div>
-<div class="section" id="other-ways-of-creating-numpy-arrays">
-<h2>Other ways of creating NumPy arrays<a class="headerlink" href="#other-ways-of-creating-numpy-arrays" title="Permalink to this headline">¶</a></h2>
-<p>There are many different ways to create NumPy arrays, here’s a few of
-the most common ones:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>      <span class="c1"># 2x3 array with all elements 0</span>
-<span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nb">bool</span><span class="p">)</span> <span class="c1"># 3x2 boolean array</span>
-<span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>         <span class="c1"># Evenly spaced values in an interval</span>
-<span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>   <span class="c1"># similar to above... but what is the difference?</span>
+<p>Other ways of creating arrays</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>           <span class="c1"># 2x3 array with all elements 0</span>
+<span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>             <span class="c1"># 1x2 array with all elements 1</span>
+<span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="mi">7</span><span class="p">)</span>           <span class="c1"># 2x2 array with all elements 7</span>
+<span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>                  <span class="c1"># 2x2 identity matrix</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>              <span class="c1"># Evenly spaced values in an interval</span>
+<span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>        <span class="c1"># same as above, see exercise</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;x.npy&#39;</span><span class="p">)</span>           <span class="c1"># load an array from a .npy file</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nb">bool</span><span class="p">)</span>  <span class="c1"># 3x2 boolean array</span>
+
+<span class="n">d</span><span class="o">.</span><span class="n">dtype</span>                    <span class="c1"># datatype of the array</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="numpy-array-slicing-syntax">
-<h2>NumPy array slicing syntax<a class="headerlink" href="#numpy-array-slicing-syntax" title="Permalink to this headline">¶</a></h2>
-<p>NumPy provides a convenient array syntax to reference subarrays,
-similar to MATLAB or Fortran.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">[</span><span class="n">low</span><span class="p">:</span><span class="n">high</span><span class="p">:</span><span class="n">step</span><span class="p">]</span>
+<div class="section" id="exercise-1">
+<h2>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Try out <code class="docutils literal notranslate"><span class="pre">np.arange(10)</span></code> and <code class="docutils literal notranslate"><span class="pre">np.linspace(0,9,10)</span></code>, what is the difference? Can you adjust one to do the same as the other?</p></li>
+<li><p>Create a 3x2 array of random float numbers (check np.random) between 0 and 1. Now change the arrays datatype to int (array.astype). How does the array look like?</p></li>
+<li><p>Create a 3x2 array of random float numbers (check np.random) between 0 and 1. Reshape the array in any way possible. What is not possible?</p></li>
+<li><p>Save above array to .npy file (np.save) and read it in again.</p></li>
+</ul>
+</div>
+<div class="section" id="array-maths">
+<h2>Array maths<a class="headerlink" href="#array-maths" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">]])</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>returns the array elements in the range <code class="docutils literal notranslate"><span class="pre">[low,</span> <span class="pre">high)</span></code> with a stride
-of <code class="docutils literal notranslate"><span class="pre">step</span></code>. Equivalently for multidimensional arrays.  For
-multidimensional arrays NumPy by default stores arrays in row-major
-order, like C. Note that this is in contrast to e.g. Fortran, MATLAB
-or Julia that use a column-major layout.</p>
-<p>Using array syntax efficiently is <strong>key</strong> to using NumPy in a fashion
-that leads to short as well as efficient code.</p>
-<p>NumPy also provides so-called <em>advanced indexing</em>, where you can
-select elements with a list of indices.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
-<span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>    <span class="c1"># Will this modify a?</span>
+<p>Also: - (<code class="docutils literal notranslate"><span class="pre">np.subtract()</span></code>), * (<code class="docutils literal notranslate"><span class="pre">np.multiply()</span></code>), / (<code class="docutils literal notranslate"><span class="pre">np.divide()</span></code>), <code class="docutils literal notranslate"><span class="pre">np.sqrt()</span></code>, <code class="docutils literal notranslate"><span class="pre">np.sum()</span></code>, <code class="docutils literal notranslate"><span class="pre">np.mean()</span></code></p>
+</div>
+<div class="section" id="exercise-2">
+<h2>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>What is the difference between <code class="docutils literal notranslate"><span class="pre">np.multiply</span></code> and <code class="docutils literal notranslate"><span class="pre">np.dot</span></code> ?</p></li>
+<li><p>What is the difference between <code class="docutils literal notranslate"><span class="pre">np.sum(axis=1)</span></code> vs <code class="docutils literal notranslate"><span class="pre">np.sum(axis=0)</span></code>?</p></li>
+</ul>
+</div>
+<div class="section" id="indexing-and-slicing">
+<h2>Indexing and Slicing<a class="headerlink" href="#indexing-and-slicing" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>      <span class="c1"># 4x4 identity matrix</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>               <span class="c1"># first row</span>
+<span class="n">a</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>             <span class="c1"># first column</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>         <span class="c1"># middle 2x2 array</span>
+
+<span class="n">a</span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>  <span class="c1">#slicing with lists</span>
+</pre></div>
+</div>
+<p>Boolean indexing</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">idx</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>      <span class="c1"># creates boolean matrix of same size as a</span>
+<span class="n">a</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>             <span class="c1"># array of trues</span>
+<span class="n">a</span><span class="p">[</span><span class="n">a</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>           <span class="c1"># same as above in one line</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="views-vs-copies">
-<h2>Views vs. copies<a class="headerlink" href="#views-vs-copies" title="Permalink to this headline">¶</a></h2>
-<p>When slicing an array, you <strong>DO NOT</strong> get a copy of those elements,
-but rather a <em>view</em>.  That is, the data elements are the same as in
-the original array</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
-<span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+<div class="section" id="exercise-3">
+<h2>Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
 </pre></div>
 </div>
-<p>Views rather than copies is more efficient, particularly for large
-arrays, but they can sometimes be confusing. Be careful!</p>
-<p>If you do need a copy, NumPy arrays have a <code class="docutils literal notranslate"><span class="pre">copy</span></code> method to create a
-copy rather than getting a view.</p>
-<p><strong>NOTE</strong> With advanced indexing, you always get a copy!</p>
+<ul class="simple">
+<li><p>Try out above code. How does a look like before b has changed and after? How could it be avoided?</p></li>
+</ul>
 </div>
-<div class="section" id="array-shape-and-size">
-<h2>Array shape and size<a class="headerlink" href="#array-shape-and-size" title="Permalink to this headline">¶</a></h2>
-<p>NumPy arrays have a shape and size attribute.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
-<span class="n">a</span><span class="o">.</span><span class="n">size</span>               <span class="c1"># Number of elements</span>
-<span class="n">a</span><span class="o">.</span><span class="n">shape</span>              <span class="c1"># shape tuple</span>
-</pre></div>
+<div class="section" id="exercise-4">
+<h2>Exercise 4<a class="headerlink" href="#exercise-4" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Understand when numpy arrays are still slow</p></li>
+</ul>
 </div>
-<p>We can modify the shape of an array with the <code class="docutils literal notranslate"><span class="pre">reshape</span></code> or <code class="docutils literal notranslate"><span class="pre">resize</span></code>
-methods. Or for the special case of flattening an array to a 1D array,
-<code class="docutils literal notranslate"><span class="pre">ravel</span></code>.</p>
-</div>
-<div class="section" id="combining-splitting-and-rolling-arrays">
-<h2>Combining, splitting and rolling arrays<a class="headerlink" href="#combining-splitting-and-rolling-arrays" title="Permalink to this headline">¶</a></h2>
-<p>For combining multiple arrays into a larger array, see the
-<code class="docutils literal notranslate"><span class="pre">concatenate</span></code>, <code class="docutils literal notranslate"><span class="pre">stack</span></code>, <code class="docutils literal notranslate"><span class="pre">block</span></code>, and the more specialized
-variants <code class="docutils literal notranslate"><span class="pre">hstack</span></code>, <code class="docutils literal notranslate"><span class="pre">vstack</span></code>, <code class="docutils literal notranslate"><span class="pre">dstack</span></code>.</p>
-<p>Similarly, for splitting an array into multiple parts, there’s
-<code class="docutils literal notranslate"><span class="pre">split</span></code>, <code class="docutils literal notranslate"><span class="pre">hsplit</span></code>, <code class="docutils literal notranslate"><span class="pre">vsplit</span></code>.</p>
-<p>To roll an array, that is shift the elements along a give axis, use
-<code class="docutils literal notranslate"><span class="pre">roll</span></code>.</p>
-</div>
-<div class="section" id="exercise-2-2">
-<h2>Exercise 2.2<a class="headerlink" href="#exercise-2-2" title="Permalink to this headline">¶</a></h2>
-<p>Create an array <code class="docutils literal notranslate"><span class="pre">x</span></code> of 100 evenly spaced numbers in the range
-[-2*pi, 2*pi].</p>
-<p>Next, create an array <code class="docutils literal notranslate"><span class="pre">y</span></code>, where each element is the <code class="docutils literal notranslate"><span class="pre">sin</span></code> of each
-element in the previously created array.</p>
-<p>Then, figure out the indices where the array <code class="docutils literal notranslate"><span class="pre">y</span></code> changes sign. What
-are the <code class="docutils literal notranslate"><span class="pre">x</span></code> values for these indices?</p>
-</div>
-<div class="section" id="numpy-i-o">
-<h2>NumPy I/O<a class="headerlink" href="#numpy-i-o" title="Permalink to this headline">¶</a></h2>
-<p>NumPy has functionality for saving and loading NumPy arrays from
-files.  For reading/writing textfiles there is <code class="docutils literal notranslate"><span class="pre">loadtxt</span></code> and
-<code class="docutils literal notranslate"><span class="pre">savetxt</span></code>. See also <code class="docutils literal notranslate"><span class="pre">genfromtxt</span></code> with more sophisticated handling
-of missing values etc.</p>
-<p>For large arrays, it’s faster to use a binary format. For these NumPy
-defines a <code class="docutils literal notranslate"><span class="pre">.npy</span></code> format. Loading and saving these files can be done
-with the <code class="docutils literal notranslate"><span class="pre">load</span></code> and <code class="docutils literal notranslate"><span class="pre">save</span></code> methods.  There’s also the <code class="docutils literal notranslate"><span class="pre">.npz</span></code>
-format, which is a zip archive containing several numpy ndarrays in
-one file. <code class="docutils literal notranslate"><span class="pre">.npz</span></code> format files can be read/written with <code class="docutils literal notranslate"><span class="pre">load</span></code>,
-<code class="docutils literal notranslate"><span class="pre">savez</span></code> and <code class="docutils literal notranslate"><span class="pre">savez_compressed</span></code> methods. This is a good choice for
-temporary or intermediate files such as checkpoints etc. Note that the
-format is Numpy-specific, and other languages might not easily be able
-to read it. Similarly, for long-term archiving other formats might be
-a better choice.</p>
-</div>
-<div class="section" id="random-numbers-in-numpy">
-<h2>Random Numbers in NumPy<a class="headerlink" href="#random-numbers-in-numpy" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">numpy.random</span></code> module contains functionality to create
-pseudorandom numbers following different distributions.</p>
-</div>
-<div class="section" id="linear-algebra-in-numpy">
-<h2>Linear algebra in Numpy<a class="headerlink" href="#linear-algebra-in-numpy" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">dot</span></code> method provides a generalized dot product. It can compute
-dot products of 1D vectors, matrix-vector products as well as
-matrix-matrix products.  It is an interface to the famous BLAS
-library, of which multiple highly optimized versions exist.  The
-<code class="docutils literal notranslate"><span class="pre">numpy.linalg</span></code> module contains interfaces to the most common linear
-algebra operations, such as calculating eigenvalues, Cholesky and
-singular value decompositions, solving linear systems, least squares,
-(pseudo)inverse. This module is an interface to the LAPACK library
-(which in turn builds on top of BLAS).</p>
-</div>
-<div class="section" id="exercise-2-3">
-<h2>Exercise 2.3<a class="headerlink" href="#exercise-2-3" title="Permalink to this headline">¶</a></h2>
-<p>Remember our first exercise, implementing matrix multiplication? Now
-do the same, but use NumPy arrays and the <code class="docutils literal notranslate"><span class="pre">dot</span></code> method. Compare
-performance to the code you wrote yourself earlier, using the IPython
-%timeit macro.</p>
-</div>
-<div class="section" id="exercise-2-4">
-<h2>Exercise 2.4<a class="headerlink" href="#exercise-2-4" title="Permalink to this headline">¶</a></h2>
-<p>Here’s a number of quick numpy exercises to get you a feel of numpy
-functionality, index manipulation etc.</p>
+<div class="section" id="additional-exercises">
+<h2>Additional Exercises<a class="headerlink" href="#additional-exercises" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
 <li><p>Reverse a vector. Given a vector, reverse it such that the last
 element becomes the first, e.g. [1, 2, 3] =&gt; [3, 2, 1]</p></li>
-<li><p>Create an identity matrix of size 4x4.</p></li>
 <li><p>Create a 2D array with zeros on the borders and 1 inside.</p></li>
 <li><p>Create a random array with elements [0, 1), then add 10 to all
 elements in the range [0.2, 0.7).</p></li>
@@ -422,33 +352,6 @@ array on top and the ones on the bottom.  Finally, do the same,
 but create a 4x8 array with the zeros on the left and the ones on
 the rigth.</p></li>
 </ol>
-<p>More quick NumPy exercises like this one <a class="reference external" href="https://www.labri.fr/perso/nrougier/teaching/numpy.100/">over here</a>.</p>
-</div>
-<div class="section" id="exercise-2-5">
-<h2>Exercise 2.5<a class="headerlink" href="#exercise-2-5" title="Permalink to this headline">¶</a></h2>
-<p>The topic of this exercise is <code class="docutils literal notranslate"><span class="pre">np.einsum</span></code> which implements the
-‘Einstein summation convention’.  The <a class="reference external" href="https://en.wikipedia.org/wiki/Einstein_notation">Einstein summation convention</a> is a commonly used
-when working with tensors, but can also be useful for succintly
-representing array expressions.</p>
-<p>For instance, matrix multiplication can be expressed as</p>
-<div class="math notranslate nohighlight">
-\[C^i_k = A^i_j B^j_k\]</div>
-<p>Implement this with the help of <code class="docutils literal notranslate"><span class="pre">np.einsum</span></code>.</p>
-<p>Einstein notation is also available in pytorch and tensorflow. For
-more information about Einstein notation in NumPy see</p>
-<ul class="simple">
-<li><p><a class="reference external" href="http://ajcr.net/Basic-guide-to-einsum/">A basic introduction to NumPy’s einsum</a></p></li>
-<li><p><a class="reference external" href="https://obilaniu6266h16.wordpress.com/2016/02/04/einstein-summation-in-numpy/">Einsten Summation in NumPy</a></p></li>
-<li><p><a class="reference external" href="https://rockt.github.io/2018/04/30/einsum">Einsum is all you need - Einstein summation in deep learning</a></p></li>
-</ul>
-<p>(lesson here)</p>
-<div class="admonition-keypoints keypoints admonition">
-<p class="admonition-title">Keypoints</p>
-<ul class="simple">
-<li><p>K1</p></li>
-<li><p>K2</p></li>
-</ul>
-</div>
 </div>
 </div>
 
