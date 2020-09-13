@@ -102,7 +102,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#array-maths">Array maths</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#indexing-and-slicing">Indexing and Slicing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#types-of-operations">Types of operations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#linear-algebra">Linear algebra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#linear-algebra-and-other-advanced-math">Linear algebra and other advanced math</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#additional-exercises">Additional Exercises</a></li>
 </ul>
 </li>
@@ -239,24 +239,24 @@ Fortran code for efficient calculations.</p></li>
 </ul>
 <p>To test the performance of pure Python vs numpy we can write in our jupyter notebook</p>
 <p>Create one list and one ‘empty’ list, to store the result in</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10000</span><span class="p">))</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10000</span><span class="p">))</span>
 <span class="n">b</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">0</span> <span class="p">]</span> <span class="o">*</span> <span class="mi">10000</span>
 </pre></div>
 </div>
 <p>In a new cell starting with %%timeit, loop through the list a and fill the second list b with a squared</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">timeit</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">timeit</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)):</span>
   <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span>
 </pre></div>
 </div>
 <p>For the numpy example, create one array and one ‘empty’ array to store the result in</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>In a new cell starting with %%timeit, fill be with a squared</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">timeit</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">timeit</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">a</span> <span class="o">**</span> <span class="mi">2</span>
 </pre></div>
 </div>
@@ -264,7 +264,7 @@ Fortran code for efficient calculations.</p></li>
 <div class="section" id="creating-arrays">
 <h2>Creating arrays<a class="headerlink" href="#creating-arrays" title="Permalink to this headline">¶</a></h2>
 <p>There are different ways of creating arrays:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>               <span class="c1"># 1-dimensional array (rank 1)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>               <span class="c1"># 1-dimensional array (rank 1)</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]])</span>     <span class="c1"># 2-dimensional array (rank 2)</span>
 
 <span class="n">b</span><span class="o">.</span><span class="n">shape</span>                             <span class="c1"># the shape (rows,columns)</span>
@@ -272,7 +272,7 @@ Fortran code for efficient calculations.</p></li>
 </pre></div>
 </div>
 <p>In addition to above ways of creating arrays, there are many other ways of creating arrays depending on content:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>           <span class="c1"># 2x3 array with all elements 0</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>           <span class="c1"># 2x3 array with all elements 0</span>
 <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>             <span class="c1"># 1x2 array with all elements 1</span>
 <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="mi">7</span><span class="p">)</span>           <span class="c1"># 2x2 array with all elements 7</span>
 <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>                  <span class="c1"># 2x2 identity matrix</span>
@@ -285,12 +285,12 @@ Fortran code for efficient calculations.</p></li>
 </pre></div>
 </div>
 <p>Arrays can also be stored and read from a (.npy) file:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;x.npy&#39;</span><span class="p">)</span>           <span class="c1"># save an array to a .npy file</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;x.npy&#39;</span><span class="p">)</span>           <span class="c1"># save an array to a .npy file</span>
 <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;x.npy&#39;</span><span class="p">)</span>           <span class="c1"># load an array from a .npy file</span>
 </pre></div>
 </div>
 <p>In many occasions (especially when something goes different than expected) it is useful to check and control the datatype of the array:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d</span><span class="o">.</span><span class="n">dtype</span>                    <span class="c1"># datatype of the array</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">d</span><span class="o">.</span><span class="n">dtype</span>                    <span class="c1"># datatype of the array</span>
 <span class="n">d</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>            <span class="c1"># change datatype from boolean to integer</span>
 </pre></div>
 </div>
@@ -330,7 +330,7 @@ high-level languages such as R, Matlab, etc do.</p>
 Matlab, where most things are element-by-element, but <code class="docutils literal notranslate"><span class="pre">*</span></code> becomes
 array multiplication.  Numpy values consistency and does not treat
 2-dimensional arrays specially:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]])</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]])</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">]])</span>
 
 <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
@@ -367,7 +367,7 @@ speed: you should try to cleverly use these selectors (written in C)
 to extract data to be used with other numpy functions written in C or
 Fortran.  This will give you the benefits of Python with most of the
 speed of C.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>      <span class="c1"># 4x4 identity matrix</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>      <span class="c1"># 4x4 identity matrix</span>
 <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>               <span class="c1"># first row</span>
 <span class="n">a</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>             <span class="c1"># first column</span>
 <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>         <span class="c1"># middle 2x2 array</span>
@@ -376,7 +376,7 @@ speed of C.</p>
 </pre></div>
 </div>
 <p>Boolean indexing:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 <span class="n">idx</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>      <span class="c1"># creates boolean matrix of same size as a</span>
 <span class="n">a</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>             <span class="c1"># array with matching values of above criterion</span>
 
@@ -385,7 +385,7 @@ speed of C.</p>
 </div>
 <div class="admonition-challenge challenge admonition">
 <p class="admonition-title">Challenge</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
 </pre></div>
@@ -413,7 +413,7 @@ speed of C.</p>
 </ul>
 </div>
 <p>..keypoints:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">Numpy</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">powerful</span> <span class="n">library</span> <span class="n">every</span> <span class="n">scientist</span> <span class="n">using</span> <span class="n">python</span> <span class="n">should</span> <span class="n">know</span> <span class="n">about</span><span class="p">,</span> <span class="n">since</span> <span class="n">many</span> <span class="n">other</span> <span class="n">libraries</span> <span class="n">also</span> <span class="n">use</span> <span class="n">it</span> <span class="n">internally</span><span class="o">.</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">Numpy</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">powerful</span> <span class="n">library</span> <span class="n">every</span> <span class="n">scientist</span> <span class="n">using</span> <span class="n">python</span> <span class="n">should</span> <span class="n">know</span> <span class="n">about</span><span class="p">,</span> <span class="n">since</span> <span class="n">many</span> <span class="n">other</span> <span class="n">libraries</span> <span class="n">also</span> <span class="n">use</span> <span class="n">it</span> <span class="n">internally</span><span class="o">.</span>
 <span class="o">-</span> <span class="n">Be</span> <span class="n">aware</span> <span class="n">of</span> <span class="n">some</span> <span class="n">numpy</span> <span class="n">specific</span> <span class="n">pecularities</span>
 </pre></div>
 </div>
@@ -423,44 +423,101 @@ speed of C.</p>
 <p>There are different types of standard operations in numpy:</p>
 <p><strong>ufuncs</strong>, “universal functions”: These are element-by-element
 functions with standardized arguments:</p>
-<ul class="simple">
+<ul>
 <li><p>One, two, or three input arguments</p></li>
+<li><p>For example, <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">+</span> <span class="pre">b</span></code> is similar to <code class="docutils literal notranslate"><span class="pre">np.add(a,</span> <span class="pre">b)</span></code> but the ufunc
+has more control.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">out=</span></code> output argument, store output in this array (rather than
 make a new array) - saves copying data!</p></li>
 <li><p>See the <a class="reference external" href="https://numpy.org/doc/stable/reference/ufuncs.html">full reference</a></p></li>
-</ul>
-<p><strong>Array methods</strong> do something about the array itself:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
-<span class="n">x</span><span class="o">.</span><span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-<span class="n">x</span>                    <span class="c1">#  array([[ 0,  1,  2,  3],</span>
-                               <span class="p">[</span> <span class="mi">4</span><span class="p">,</span>  <span class="mi">5</span><span class="p">,</span>  <span class="mi">6</span><span class="p">,</span>  <span class="mi">7</span><span class="p">],</span>
-                               <span class="p">[</span> <span class="mi">8</span><span class="p">,</span>  <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">]])</span>
-<span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>              <span class="c1">#  11</span>
-<span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>        <span class="c1">#  array([ 8,  9, 10, 11])</span>
-<span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>        <span class="c1">#  array([ 3,  7, 11])</span>
+<li><p>They also do <strong>broadcasting</strong>.  Can you add a 1-dimensional array of shape <cite>(3)</cite>
+to an 2-dimensional array of shape <cite>(3, 2)</cite>?   With broadcasting you
+can!</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+<span class="n">a</span> <span class="o">+</span> <span class="n">b</span>                       <span class="c1"># array([[11, 12, 13],</span>
+                            <span class="c1">#        [14, 15, 16]])</span>
 </pre></div>
 </div>
+<p>Broadcasting is smart and consistent about what it does, which I’m
+not clever enough to explain quickly here: <a class="reference external" href="https://numpy.org/doc/stable/user/basics.broadcasting.html">the manual page on
+broadcasting</a>.
+The basic idea is that it expands dimensions of the smaller array so
+that they are compatible in shape.</p>
+</li>
+</ul>
+<p><strong>Array methods</strong> do something about the array itself.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Some of these are the same as ufuncs.</p></li>
+</ul>
+<p>x = np.arange(12)
+x.shape = (3, 4)
+x                    #  array([[ 0,  1,  2,  3],</p>
+<blockquote>
+<div><p>#         [ 4,  5,  6,  7],
+#         [ 8,  9, 10, 11]])</p>
+</div></blockquote>
+<p>x.max()              #  11
+x.max(axis=0)        #  array([ 8,  9, 10, 11])
+x.max(axis=1)        #  array([ 3,  7, 11])</p>
+</div></blockquote>
 <p><strong>Other functions</strong>: there are countless other functions covering
 linear algebra, scientific functions, etc.</p>
 <div class="admonition-challenge challenge admonition">
 <p class="admonition-title">Challenge</p>
 <ul class="simple">
-<li><p><strong>In-place addition</strong>: Create an array, add it to itself using a unfunc.</p></li>
+<li><p><strong>In-place addition</strong>: Create an array, add it to itself using a
+ufunc.</p></li>
+<li><p><strong>In-place addition</strong> (advanced): Create an array of
+<cite>dtype=’float’</cite>, and an array of <cite>dtype=’int’</cite>.  Try to use the
+int array is the output argument of the first two arrays.</p></li>
+</ul>
+</div>
+<div class="admonition-solution solution dropdown admonition">
+<p class="admonition-title">Solution</p>
+<ul>
+<li><p><strong>in-place addition</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="nb">id</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>                        <span class="c1"># get the memory-ID of x</span>
+<span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>              <span class="c1"># Third argument is output array</span>
+<span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">id</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>                        <span class="c1"># get the memory-ID of x</span>
+                             <span class="c1"># - notice  it is the same</span>
+</pre></div>
+</div>
+<p>You note that <code class="docutils literal notranslate"><span class="pre">np.add()</span></code> has a third argument that is the
+output array (same as <code class="docutils literal notranslate"><span class="pre">out=</span></code>), <em>and</em> the function returns that
+same array.</p>
+</li>
 </ul>
 </div>
 </div>
-<div class="section" id="linear-algebra">
-<h2>Linear algebra<a class="headerlink" href="#linear-algebra" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="linear-algebra-and-other-advanced-math">
+<h2>Linear algebra and other advanced math<a class="headerlink" href="#linear-algebra-and-other-advanced-math" title="Permalink to this headline">¶</a></h2>
 <p>In addition to the array type, there is a <code class="docutils literal notranslate"><span class="pre">matrix</span></code> type which is
 specialized:</p>
 <ul class="simple">
 <li><p>two-dimensional only</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">*</span></code> operator is matrix multiplication</p></li>
 </ul>
+<p>Matrix or not, there are many different functions available:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/routines.linalg.html">Linear algebra in numpy</a></p></li>
+<li><p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/">Scipy</a> has even
+more functions</p></li>
+<li><p>Many other libraries use numpy arrays as the standard data
+structure: they take data in this format, and return it similarly.
+Thus, all the other packages you may want to use are compatible</p></li>
+<li><p>If you need to write your own fast code in C, numpy arrays can be
+used to pass data.  This is known as <a class="reference external" href="https://docs.python.org/3/extending/">extending Python</a>.</p></li>
+</ul>
 <div class="admonition-challenge challenge admonition">
 <p class="admonition-title">Challenge</p>
 <ul class="simple">
-<li><p><strong>Matrixes are always 2D</strong>  Make a 2x3 array and a 2x3 matrix.
+<li><p><strong>Matrixes are always 2D</strong> (advanced) Make a 2x3 array and a 2x3 matrix.
 Extract just the first row of each of them and check the <code class="docutils literal notranslate"><span class="pre">.shape</span></code>.</p></li>
 </ul>
 </div>
